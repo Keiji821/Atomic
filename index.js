@@ -169,6 +169,3 @@ console.log("Opción no válida. Intente nuevamente.");
 });
 }
 }
-
-const ddosTester = new DDoSTester();
-ddosTester.main();
