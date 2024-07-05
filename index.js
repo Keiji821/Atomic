@@ -71,3 +71,58 @@ console.log("Código actualizado correctamente.");
 }
 });
 }
+
+main() {
+const rl = readline.createInterface({
+input: process.stdin,
+output: process.stdout
+});
+
+while (true) {
+console.log("DDoS Tester");
+console.log("~~~~~~~~~~~~~~~~~~~~~~");
+console.log("1. Configurar URL");
+console.log("2. Iniciar ataque");
+console.log("3. Instalar Tor y iniciar ataque con Tor");
+console.log("4. Verificar estado de Tor");
+console.log("5. Actualizar código");
+console.log("6. Salir");
+
+rl.question("Ingrese una opción: ", (option) => {
+switch (option) {
+case "1":
+this.configUrl();
+break;
+case "2":
+if (this.url === "") {
+console.log("Debes configurar la URL primero.");
+} else {
+this.startAttack();
+}
+break;
+case "3":
+if (this.url === "") {
+console.log("Debes configurar la URL primero.");
+} else {
+this.startAttackWithTor();
+}
+break;
+case "4":
+this.checkTorStatus();
+break;
+case "5":
+this.updateCode();
+break;
+case "6":
+console.log("Saliendo del programa.");
+process.exit();
+break;
+default:
+console.log("Opción no válida. Intente nuevamente.");
+}
+});
+}
+}
+
+const ddosTester = new DDoSTester();
+ddosTester.main();
