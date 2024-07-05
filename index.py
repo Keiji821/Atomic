@@ -2,12 +2,13 @@ import requests
 import time
 import os
 
+
 class DDoSTester:
-def __init__(self):
-self.url = ""
-self.num_requests = 0
-self.delay_between_requests = 0
-self.session = requests.Session()
+    def __init__(self):
+        self.url = ""
+        self.num_requests = 0
+        self.delay_between_requests = 0
+        self.session = requests.Session()
 
 def config_url(self):
 self.url = input("Ingrese la URL a probar: ")
