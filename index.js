@@ -88,7 +88,7 @@ console.clear(); // Limpiar la consola
 console.log('[31m         DDoS attack    ');
 console.log('⭐️ Desarrollado por Keiji821');
 console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
-console.log('[32m ︳1. Iniciar ataque DDoS               ︳');
+console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
 console.log('[34m ︳2. Actualizar código                  ︳');
 console.log('[36m ︳3. Configurar conexiones simultaneas  ︳');
 console.log('[33m ︳4. Aumentar potencia del ataque       ︳');
