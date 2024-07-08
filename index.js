@@ -85,16 +85,16 @@ console.error(`Error: ${error}`);
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log(`DDoS attack`);
-console.log(`Desarrollado por Keiji821`);
+console.log(`[31m      DDoS attack     `);
+console.log(`⭐️ Desarrollado por Keiji821`);
 console.log(`[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃[0m`);
 console.log(`[36m 1. Iniciar ataque DDoS`);
 console.log(`[36m 2. Actualizar código desde GitHub`);
-console.log(`[36m 3. Configurar conexiones simultaneas[`);
+console.log(`[36m 3. Configurar conexiones simultaneas`);
 console.log(`[36m 4. Aumentar potencia del ataque`);
-console.log(`[36m5. Salir[0m`);
+console.log(`[36m5. Salir`);
 console.log(`[36m⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍`);
-rl.setPrompt(`[36m ➤ [0m`); // Establecer el texto de la casilla "Opción: "
+rl.setPrompt(`[36m ➤ `); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
 
