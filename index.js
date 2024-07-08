@@ -85,7 +85,7 @@ console.error(`Error: ${error}`);
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log(`[31m      DDoS attack     `);
+console.log(`[31m[1m        DDoS attack     `);
 console.log(`⭐️ Desarrollado por Keiji821`);
 console.log(`[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃`);
 console.log(`[36m 1. Iniciar ataque DDoS`);
