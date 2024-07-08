@@ -87,13 +87,13 @@ const showMenu = () => {
 console.clear(); // Limpiar la consola
 console.log('[31m         DDoS attack    ');
 console.log('⭐️ Desarrollado por Keiji821');
-console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
 console.log('[32m ︳「1」 Iniciar ataque DDoS               ︳');
 console.log('[34m ︳「2」 Actualizar código                 ︳');
 console.log('[36m ︳「3」 Configurar conexiones simultaneas ︳');
 console.log('[33m ︳「4」 Aumentar potencia del ataque      ︳');
 console.log('[31m ︳「5」 Salir                             ︳');
-console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
 rl.setPrompt('[37m  🌐➤ '); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
