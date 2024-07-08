@@ -87,7 +87,7 @@ const showMenu = () => {
 console.clear(); // Limpiar la consola
 console.log(`[31m      DDoS attack     `);
 console.log(`⭐️ Desarrollado por Keiji821`);
-console.log(`[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃[0m`);
+console.log(`[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃`);
 console.log(`[36m 1. Iniciar ataque DDoS`);
 console.log(`[36m 2. Actualizar código desde GitHub`);
 console.log(`[36m 3. Configurar conexiones simultaneas`);
