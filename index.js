@@ -87,13 +87,13 @@ const showMenu = () => {
 console.clear(); // Limpiar la consola
 console.log(`${colors.fg.green}Bienvenido al Termux Discord Bot!${colors.reset}`);
 console.log(`${colors.fg.yellow}Desarrollado por Keiji821${colors.reset}`);
-console.log('[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃ [0m`);
-console.log('[36m1. Iniciar ataque DDoS [0m`);
-console.log('[36m2. Actualizar código desde GitHub [0m`);
-console.log('[36m3. Configurar conexiones simultaneas [0m`);
+console.log('[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃[0m`);
+console.log('[36m1. Iniciar ataque DDoS[0m`);
+console.log('[36m2. Actualizar código desde GitHub[0m`);
+console.log('[36m3. Configurar conexiones simultaneas[0m`);
 console.log('[36m4. Aumentar potencia del ataque [0m`);
-console.log('[36m5. Salir [0m`);
-console.log('[36m⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍${colors.reset}`);
+console.log('[36m5. Salir[0m`);
+console.log('[36m⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍[0m`);
 rl.setPrompt('[36m ➤ [0m`); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
