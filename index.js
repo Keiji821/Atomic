@@ -1,43 +1,43 @@
 const net = require('net');
 const rl = require('readline').createInterface({
-input: process.stdin,
-output: process.stdout
+  input: process.stdin,
+  output: process.stdout
 });
 
 const colors = {
-reset: '[0m',
-bright: '[1m',
-dim: '[2m',
-underscore: '[4m',
-blink: '[5m',
-reverse: '[7m',
-hidden: '[8m',
-fg: {
-black: '[30m',
-red: '[31m',
-green: '[32m',
-yellow: '[33m',
-blue: '[34m',
-magenta: '[35m',
-cyan: '[36m',
-white: '[37m',
-},
-bg: {
-black: '[40m',
-red: '[41m',
-green: '[42m',
-yellow: '[43m',
-blue: '[44m',
-magenta: '[45m',
-cyan: '[46m',
-white: '[47m',
-},
+  reset: '[0m',
+  bright: '[1m',
+  dim: '[2m',
+  underscore: '[4m',
+  blink: '[5m',
+  reverse: '[7m',
+  hidden: '[8m',
+  fg: {
+    black: '[30m',
+    red: '[31m',
+    green: '[32m',
+    yellow: '[33m',
+    blue: '[34m',
+    magenta: '[35m',
+    cyan: '[36m',
+    white: '[37m',
+  },
+  bg: {
+    black: '[40m',
+    red: '[41m',
+    green: '[42m',
+    yellow: '[43m',
+    blue: '[44m',
+    magenta: '[45m',
+    cyan: '[46m',
+    white: '[47m',
+  }
 };
 
 const decorations = {
-underline: '[4m',
-bold: '[1m',
-italic: '[3m',
+  underline: '[4m',
+  bold: '[1m',
+  italic: '[3m',
 };
 
 const ddosAttack = async (url, numConnections, attackDuration) => {
@@ -111,18 +111,56 @@ console.error(`Error: ${error.message}`);
 }
 };
 
+const analyzeIP = async (ip) => {
+try {
+const nmap = require('nmap');
+const scanner = new nmap.Scanner(ip);
+scanner.on('complete', (data) => {
+const details = [];
+for (const item of data.hosts) {
+details.push(`Host: ${item.ip}`);
+details.push(`OS: ${item.os}`);
+details.push(`Ports: ${item.ports}`);
+}
+console.log(details.join('
+'));
+});
+scanner.scan();
+} catch (error) {
+console.error(`Error: ${error.message}`);
+}
+};
+
+const getGeoIP = async (ip) => {
+try {
+const geoip = require('geoip-lite');
+const geo = geoip.lookup(ip);
+if (geo) {
+console.log(`País: ${geo.country}`);
+console.log(`Región: ${geo.region}`);
+console.log(`Ciudad: ${geo.city}`);
+} else {
+console.log('No se encontró información geográfica para esa IP');
+}
+} catch (error) {
+console.error(`Error: ${error.message}`);
+}
+};
+
 const showMenu = () => {
 console.clear();
 console.log('[31m         DDoS attack    ');
 console.log('⭐️ Desarrollado por Keiji821');
-console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
 console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
 console.log('[34m ︳2. Actualizar código                  ︳');
 console.log('[36m ︳3. Configurar conexiones simultaneas  ︳');
 console.log('[33m ︳4. Aumentar potencia del ataque       ︳');
 console.log('[31m ︳5. Sacar información de IP            ︳');
-console.log('[31m ︳6. Salir                              ︳');
-console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸍');
+console.log('[31m ︳6. Análisis de IP                     ︳');
+console.log('[31m ︳7. Información geográfica de IP       ︳');
+console.log('[31m ︳8. Salir                              ︳');
+console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎺⸍');
 rl.setPrompt('[37m  🌐➤ ');
 rl.prompt();
 };
@@ -164,7 +202,7 @@ showMenu(); // Volver a mostrar el menú principal
 });
 break;
 case '4':
-console.log('Ingrese la duración del ataque (en segundos): ');
+console.log('Ingrese la duración del ataque (en segundos):>');
 rl.question('Duración: ', (duration) => {
 if (duration === '') {
 console.log('Valor invalido');
@@ -177,7 +215,7 @@ showMenu(); // Volver a mostrar el menú principal
 });
 break;
 case '5':
-console.log('Ingrese la IP para sacar información: ');
+console.log('Ingrese la IP para obtener información: ');
 rl.question('IP: ', (ip) => {
 if (ip === '') {
 console.log('IP invalida');
@@ -189,6 +227,30 @@ showMenu();
 });
 break;
 case '6':
+console.log('Ingrese la IP para análisis: ');
+rl.question('IP: ', (ip) => {
+if (ip === '') {
+console.log('IP invalida');
+showMenu();
+} else {
+analyzeIP(ip);
+showMenu();
+}
+});
+break;
+case '7':
+console.log('Ingrese la IP para obtener información geográfica: ');
+rl.question('IP: ', (ip) => {
+if (ip === '') {
+console.log('IP invalida');
+showMenu();
+} else {
+getGeoIP(ip);
+showMenu();
+}
+});
+break;
+case '8':
 console.log('Saliendo...');
 process.exit();
 break;
