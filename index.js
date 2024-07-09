@@ -122,8 +122,8 @@ details.push(`Host: ${item.ip}`);
 details.push(`OS: ${item.os}`);
 details.push(`Ports: ${item.ports}`);
 }
-console.log(details.join('
-'));
+console.log(details.join(String.raw`
+`));
 });
 scanner.scan();
 } catch (error) {
