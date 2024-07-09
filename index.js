@@ -136,6 +136,7 @@ console.error(`Error: ${error.message}`);
 }
 };
 
+
 const analyzeIP = async (ip) => {
 try {
 let results;
@@ -147,6 +148,7 @@ return;
 }
 const lines = stdout.trim().split(String.raw`
 `);
+if (results) {
 for (const result of results) {
 if (result.includes('open')) {
 console.log(`Puerto abierto: ${result}`);
@@ -155,6 +157,9 @@ console.log(`Puerto filtrado: ${result}`);
 } else if (result.includes('closed')) {
 console.log(`Puerto cerrado: ${result}`);
 }
+}
+} else {
+console.log("No hay resultados");
 }
 });
 } catch (error) {
