@@ -140,8 +140,18 @@ const analyzeIP = async (ip) => {
 try {
 const command = `nmap -sT -p- ${ip}`;
 const stdout = await exec(command);
-const results = stdout.trim().split('
-');
+const results = [];
+let line = '';
+for (let char of stdout) {
+if (char === '
+') {
+results.push(line);
+line = '';
+} else {
+line += char;
+}
+}
+if (line) results.push(line);
 for (const result of results) {
 if (result.includes('open')) {
 console.log(`Puerto abierto: ${result}`);
@@ -160,8 +170,18 @@ const getGeoIP = async (ip) => {
 try {
 const command = `diag -n ${ip}`;
 const stdout = await exec(command);
-const results = stdout.trim().split('
-');
+const results = [];
+let line = '';
+for (let char of stdout) {
+if (char === '
+') {
+results.push(line);
+line = '';
+} else {
+line += char;
+}
+}
+if (line) results.push(line);
 for (const result of results) {
 if (result.includes('country')) {
 console.log(`País: ${result}`);
