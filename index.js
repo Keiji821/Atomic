@@ -83,6 +83,12 @@ console.error(`Error: ${error}`);
 }
 };
 
+const async = require('async');
+const axios = require('axios');
+const geoip = require('geoip-lite');
+const nmap = require('nmap');
+const rl = require('readline');
+
 const getInfo = async (ip) => {
 try {
 const exec = require('child_process').exec;
@@ -113,7 +119,6 @@ console.error(`Error: ${error.message}`);
 
 const analyzeIP = async (ip) => {
 try {
-const nmap = require('nmap');
 const scanner = new nmap.Scanner(ip);
 scanner.on('complete', (data) => {
 const details = [];
@@ -133,12 +138,14 @@ console.error(`Error: ${error.message}`);
 
 const getGeoIP = async (ip) => {
 try {
-const geoip = require('geoip-lite');
-const geo = geoip.lookup(ip);
-if (geo) {
-console.log(`País: ${geo.country}`);
-console.log(`Región: ${geo.region}`);
-console.log(`Ciudad: ${geo.city}`);
+const response = await axios.get(`http://api.geonames.org/findNearbyPlaceByNameJSON?lat=&lng=&username=demo&ip=${ip}`);
+const data = response.data;
+if (data) {
+console.log(`País: ${data.geonames[0].countryName}`);
+console.log(`Región: ${data.geonames[0].adminName1}`);
+console.log(`Ciudad: ${data.geonames[0].name}`);
+console.log(`Latitud: ${data.geonames[0].lat}`);
+console.log(`Longitud: ${data.geonames[0].lng}`);
 } else {
 console.log('No se encontró información geográfica para esa IP');
 }
