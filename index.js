@@ -139,11 +139,7 @@ console.error(`Error: ${error.message}`);
 const analyzeIP = async (ip) => {
 try {
 const command = `nmap -sT -p- ${ip}`;
-exec(command, (error, stdout, stderr) => {
-if (error) {
-console.error(`Error: ${error.message}`);
-return;
-}
+const stdout = await exec(command);
 const results = stdout.trim().split('
 ');
 for (const result of results) {
@@ -155,7 +151,6 @@ console.log(`Puerto filtrado: ${result}`);
 console.log(`Puerto cerrado: ${result}`);
 }
 }
-});
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
@@ -163,25 +158,21 @@ console.error(`Error: ${error.message}`);
 
 const getGeoIP = async (ip) => {
 try {
-const response = await axios.get(`http://api.geonames.org/findNearbyPlaceByNameJSON?lat=&lng=&username=demo&ip=${ip}`);
-const data = response.data;
-if (data) {
-console.log(`País: ${data.geonames[0].countryName}`);
-console.log(`Región: ${data.geonames[0].adminName1}`);
-console.log(`Ciudad: ${data.geonames[0].name}`);
-console.log(`Latitud: ${data.geonames[0].lat}`);
-console.log(`Longitud: ${data.geonames[0].lng}`);
-} else {
-console.log('No se encontró información geográfica para esa IP');
+const command = `diag -n ${ip}`;
+const stdout = await exec(command);
+const results = stdout.trim().split('
+');
+for (const result of results) {
+if (result.includes('country')) {
+console.log(`País: ${result}`);
+} else if (result.includes('region')) {
+console.log(`Región: ${result}`);
+} else if (result.includes('city')) {
+console.log(`Ciudad: ${result}`);
+}
 }
 } catch (error) {
-if (error.response.status === 404) {
-console.log('No se encontró información geográfica para esa IP');
-} else if (error.response.status === 500) {
-console.log('Error interno del servidor');
-} else {
 console.error(`Error: ${error.message}`);
-}
 }
 };
 
