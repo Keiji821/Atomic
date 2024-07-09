@@ -44,20 +44,19 @@ bold: '[1m',
 italic: '[3m',
 };
 
-const portScan = async (host, ports) => {
-const results = [];
-for (let i = 0; i < ports.length; i++) {
-const port = ports[i];
-const socket = new net.Socket();
-socket.connect(port, host, () => {
-results.push(`${port} is open`);
-socket.destroy();
-});
-socket.on('error', (err) => {
-results.push(`${port} is closed`);
-});
-}
-return results;
+const securityScan = async (host) => {
+  const ports = await portScan(host, [80, 443, 22]);
+  const results = [];
+
+  ports.forEach((port) => {
+    if (port.includes('open')) {
+      results.push(`Puerto ${port} abierto`);
+    } else {
+      results.push(`Puerto ${port} cerrado`);
+    }
+  });
+
+  return results;
 };
 
 const securityScan = async (host) => {
@@ -184,8 +183,9 @@ console.log('URL invalida');
 showMenu();
 } else {
 securityScan(url).then((results) => {
-console.log(results);
-showMenu(); 
+  console.log(`Análisis de seguridad para ${url}:`);
+  results.forEach((result) => console.log(result));
+  showMenu();
 });
 }
 });
