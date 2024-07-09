@@ -138,24 +138,10 @@ console.error(`Error: ${error.message}`);
 
 const analyzeIP = async (ip) => {
 try {
-const nmap = spawn('nmap', ['-sT', '-p-', ip]);
-let output = '';
-nmap.stdout.on('data', (data) => {
-output += data.toString();
-});
-nmap.stderr.on('data', (data) => {
-console.error(`Error: ${data}`);
-});
-await new Promise((resolve, reject) => {
-nmap.on('close', (code) => {
-if (code === 0) {
-resolve(output);
-} else {
-reject(`Error: ${code}`);
-}
-});
-});
-const results = output.trim().split('');
+const command = `nmap -sT -p- ${ip}`;
+const output = await exec(command);
+const results = output.stdout.trim().split('
+');
 for (const result of results) {
 if (result.includes('open')) {
 console.log(`Puerto abierto: ${result}`);
@@ -172,24 +158,9 @@ console.error(`Error: ${error.message}`);
 
 const getGeoIP = async (ip) => {
 try {
-const diag = spawn('diag', ['-n', ip]);
-let output = '';
-diag.stdout.on('data', (data) => {
-output += data.toString();
-});
-diag.stderr.on('data', (data) => {
-console.error(`Error: ${data}`);
-});
-await new Promise((resolve, reject) => {
-diag.on('close', (code) => {
-if (code === 0) {
-resolve(output);
-} else {
-reject(`Error: ${code}`);
-}
-});
-});
-const results = output.trim().split('
+const command = `diag -n ${ip>`;
+const output = await exec(command);
+const results = output.stdout.trim().split('
 ');
 for (const result of results) {
 if (result.includes('country')) {
