@@ -170,7 +170,7 @@ console.error(`Error: ${error.message}`);
 
 const getGeoIP = async (ip) => {
 try {
-const command = `diag -n ${ip}`;
+const command = `diagtool -n ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error.message}`);
@@ -178,6 +178,7 @@ return;
 }
 const lines = stdout.trim().split(String.raw`
 `);
+if (results) {
 for (const result of results) {
 if (result.includes('country')) {
 console.log(`País: ${result}`);
@@ -186,6 +187,9 @@ console.log(`Región: ${result}`);
 } else if (result.includes('city')) {
 console.log(`Ciudad: ${result}`);
 }
+}
+} else {
+console.log("No hay resultados");
 }
 });
 } catch (error) {
