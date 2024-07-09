@@ -145,6 +145,13 @@ console.error(`Error: ${error.message}`);
 return;
 }
 console.log(stdout);
+const results = stdout.trim().split('
+');
+for (const result of results) {
+if (result.includes('open')) {
+console.log(`Puerto abierto: ${result}`);
+}
+}
 });
 } catch (error) {
 console.error(`Error: ${error.message}`);
@@ -165,7 +172,11 @@ console.log(`Longitud: ${data.geonames[0].lng}`);
 console.log('No se encontró información geográfica para esa IP');
 }
 } catch (error) {
+if (error.response.status === 404) {
+console.log('No se encontró información geográfica para esa IP');
+} else {
 console.error(`Error: ${error.message}`);
+}
 }
 };
 
