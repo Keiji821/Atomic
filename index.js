@@ -153,6 +153,7 @@ case '2':
 updateCode();
 showMenu(); 
 break;
+
 case '3':
 console.log('Ingrese el número de conexiones simultaneas: ');
 rl.question('Conexiones: ', (conexiones) => {
@@ -166,6 +167,7 @@ showMenu();
 }
 });
 break;
+
 case '4':
 console.log('Ingrese la duración del ataque (en segundos): ');
 rl.question('Duración: ', (duration) => {
@@ -179,20 +181,25 @@ showMenu();
 }
 });
 break;
-case '5':
-console.log('Ingrese la URL del objetivo para el análisis de seguridad: ');
-rl.question('URL: ', (url) => {
-if (url === '') {
-console.log('URL invalida');
-showMenu();
-} else {
-securityScan(url).then((results) => {
-  console.log(`Análisis de seguridad para ${url}:`);
-  results.forEach((result) => console.log(result));
-  showMenu();
-});
-}
-});
+
+rl.on('line', (option) => {
+  switch (option.trim()) {
+    case '5':
+      console.log('Ingrese la URL del objetivo para el análisis de seguridad: ');
+      rl.question('URL: ', (url) => {
+        if (url === '') {
+          console.log('URL invalida');
+          showMenu();
+        } else {
+          securityScan(url).then((results) => {
+            console.log(`Análisis de seguridad para ${url}:`);
+            results.forEach((result) => console.log(result));
+            showMenu();
+          });
+        }
+      });
+      break;
+
 break;
 case '6':
 console.log('Saliendo...');
