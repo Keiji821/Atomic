@@ -139,8 +139,12 @@ console.error(`Error: ${error.message}`);
 const analyzeIP = async (ip) => {
 try {
 const command = `nmap -sT -p- ${ip}`;
-const output = await exec(command);
-const results = output.stdout.trim().split('
+exec(command, (error, stdout, stderr) => {
+if (error) {
+console.error(`Error: ${error.message}`);
+return;
+}
+const results = stdout.trim().split('
 ');
 for (const result of results) {
 if (result.includes('open')) {
@@ -151,6 +155,7 @@ console.log(`Puerto filtrado: ${result}`);
 console.log(`Puerto cerrado: ${result}`);
 }
 }
+});
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
@@ -158,9 +163,13 @@ console.error(`Error: ${error.message}`);
 
 const getGeoIP = async (ip) => {
 try {
-const command = `diag -n ${ip>`;
-const output = await exec(command);
-const results = output.stdout.trim().split('
+const command = `diag -n ${ip}`;
+exec(command, (error, stdout, stderr) => {
+if (error) {
+console.error(`Error: ${error.message}`);
+return;
+}
+const results = stdout.trim().split('
 ');
 for (const result of results) {
 if (result.includes('country')) {
@@ -171,6 +180,7 @@ console.log(`Región: ${result}`);
 console.log(`Ciudad: ${result}`);
 }
 }
+});
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
