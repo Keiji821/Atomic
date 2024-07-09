@@ -83,19 +83,35 @@ console.error(`Error: ${error}`);
 }
 };
 
+const getInfo = async (ip) => {
+try {
+const exec = require('child_process').exec;
+exec(`nslookup ${ip}`, (error, stdout, stderr) => {
+if (error) {
+console.error(`Error: ${error}`);
+} else {
+console.log(stdout);
+}
+});
+} catch (error) {
+console.error(`Error: ${error}`);
+}
+};
+
 const showMenu = () => {
-console.clear(); // Limpiar la consola
+console.clear();
 console.log('[31m         DDoS attack    ');
 console.log('⭐️ Desarrollado por Keiji821');
-console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
 console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
 console.log('[34m ︳2. Actualizar código                  ︳');
 console.log('[36m ︳3. Configurar conexiones simultaneas  ︳');
 console.log('[33m ︳4. Aumentar potencia del ataque       ︳');
-console.log('[31m ︳5. Salir                              ︳');
-console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
-rl.setPrompt('[37m  🌐➤ '); // Establecer el texto de la casilla "Opción: "
-rl.prompt(); // Mostrar la casilla "Opción:"
+console.log('[31m ︳5. Sacar información de IP            ︳');
+console.log('[31m ︳6. Salir                              ︳');
+console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸍');
+rl.setPrompt('[37m  🌐➤ ');
+rl.prompt();
 };
 
 let numConnections = 100; // Número de conexiones simultaneas por defecto
@@ -148,6 +164,18 @@ showMenu(); // Volver a mostrar el menú principal
 });
 break;
 case '5':
+console.log('Ingrese la IP para sacar información: ');
+rl.question('IP: ', (ip) => {
+if (ip === '') {
+console.log('IP invalida');
+showMenu();
+} else {
+getInfo(ip);
+showMenu();
+}
+});
+break;
+case '6':
 console.log('Saliendo...');
 process.exit();
 break;
