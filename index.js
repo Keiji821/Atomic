@@ -84,32 +84,31 @@ console.error(`Error: ${error}`);
 };
 
 const getInfo = async (ip) => {
-try {
-const exec = require('child_process').exec;
-exec(`dig +nocmd ${ip} any +multiline`, (error, stdout, stderr) => {
-if (error) {
-console.error(`Error: ${error}`);
-} else {
-const info = stdout.split('
-');
-const details = [];
-for (const line of info) {
-if (line.includes(';; ANSWER SECTION:')) {
-details.push(`** ANSWER SECTION **`);
-} else if (line.includes(';')) {
-const parts = line.split(';');
-const key = parts[0].trim();
-const value = parts[1].trim();
-details.push(` ${key}: ${value}`);
-}
-}
-console.log(details.join('
+  try {
+    const exec = require('child_process').exec;
+    const command = `dig +nocmd ${ip} any +multiline`;
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error: ${error.message}`);
+        return;
+      }
+      const lines = stdout.trim().split(/?
+/);
+      const details = [];
+      for (const line of lines) {
+        if (line.includes(';; ANSWER SECTION:')) {
+          details.push('** ANSWER SECTION **');
+        } else if (line.includes(';')) {
+          const [key, value] = line.split(';');
+          details.push(` ${key.trim()}: ${value.trim()}`);
+        }
+      }
+      console.log(details.join('
 '));
-}
-});
-} catch (error) {
-console.error(`Error: ${error}`);
-}
+    });
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+  }
 };
 
 const showMenu = () => {
