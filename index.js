@@ -73,7 +73,8 @@ const sockets = [];
 for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
 socket.connect(80, url, () => {
-console.log(`[31m Conectado a ${url}`););
+console.log(`[31m Conectado a ${url}`);
+});
 socket.on('data', (data) => {
 console.log(`Dato recibido de ${url}`);
 });
@@ -149,9 +150,7 @@ console.log(stdout);
 console.error(`Error: ${error.message}`);
 }
 };
-```
-** Paso 8: Definir función `getGeoIP` **
-```
+
 const getGeoIP = async (ip) => {
 try {
 const response = await axios.get(`http://api.geonames.org/findNearbyPlaceByNameJSON?lat=&lng=&username=demo&ip=${ip}`);
