@@ -86,11 +86,25 @@ console.error(`Error: ${error}`);
 const getInfo = async (ip) => {
 try {
 const exec = require('child_process').exec;
-exec(`nslookup ${ip}`, (error, stdout, stderr) => {
+exec(`dig +nocmd ${ip} any +multiline`, (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error}`);
 } else {
-console.log(stdout);
+const info = stdout.split('
+');
+const details = [];
+for (const line of info) {
+if (line.includes(';; ANSWER SECTION:')) {
+details.push(`** ANSWER SECTION **`);
+} else if (line.includes(';')) {
+const parts = line.split(';');
+const key = parts[0].trim();
+const value = parts[1].trim();
+details.push(` ${key}: ${value}`);
+}
+}
+console.log(details.join('
+'));
 }
 });
 } catch (error) {
