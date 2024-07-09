@@ -144,7 +144,7 @@ if (error) {
 console.error(`Error: ${error.message}`);
 return;
 }
-const results =(stdout.trim().split(String.raw`
+const lines = stdout.trim().split(String.raw`
 `);
 for (const result of results) {
 if (result.includes('open')) {
@@ -169,7 +169,7 @@ if (error) {
 console.error(`Error: ${error.message}`);
 return;
 }
-const results = stdout.trim().split(String.raw`
+const lines = stdout.trim().split(String.raw`
 `);
 for (const result of results) {
 if (result.includes('country')) {
