@@ -144,8 +144,8 @@ if (error) {
 console.error(`Error: ${error.message}`);
 return;
 }
-const results = stdout.trim().split('
-');
+const results =(stdout.trim().split(String.raw`
+`);
 for (const result of results) {
 if (result.includes('open')) {
 console.log(`Puerto abierto: ${result}`);
@@ -169,8 +169,8 @@ if (error) {
 console.error(`Error: ${error.message}`);
 return;
 }
-const results = stdout.trim().split('
-');
+const results = stdout.trim().split(String.raw`
+`);
 for (const result of results) {
 if (result.includes('country')) {
 console.log(`País: ${result}`);
