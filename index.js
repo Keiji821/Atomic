@@ -45,24 +45,17 @@ italic: '[3m',
 };
 
 const securityScan = async (host) => {
-  const ports = await portScan(host, [80, 443, 22]);
-  const results = [];
+const ports = await portScan(host, [80, 443, 22]);
+const results = [];
 
-  ports.forEach((port) => {
-    if (port.includes('open')) {
-      results.push(`Puerto ${port} abierto`);
-    } else {
-      results.push(`Puerto ${port} cerrado`);
-    }
-  });
+ports.forEach((port) => {
+if (port.includes('open')) {
+results.push(`Puerto ${port} abierto`);
+} else {
+results.push(`Puerto ${port} cerrado`);
+}
+});
 
-  return results;
-};
-
-const securityScan = async (host) => {
-const results = {
-ports: await portScan(host, [80, 443, 22])
-};
 return results;
 };
 
