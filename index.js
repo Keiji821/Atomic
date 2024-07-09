@@ -87,7 +87,6 @@ const async = require('async');
 const axios = require('axios');
 const geoip = require('geoip-lite');
 const nmap = require('nmap');
-const rl = require('readline');
 
 const getInfo = async (ip) => {
 try {
