@@ -144,12 +144,15 @@ if (error) {
 console.error(`Error: ${error.message}`);
 return;
 }
-console.log(stdout);
 const results = stdout.trim().split('
 ');
 for (const result of results) {
 if (result.includes('open')) {
 console.log(`Puerto abierto: ${result}`);
+} else if (result.includes('filtered')) {
+console.log(`Puerto filtrado: ${result}`);
+} else if (result.includes('closed')) {
+console.log(`Puerto cerrado: ${result}`);
 }
 }
 });
@@ -174,6 +177,8 @@ console.log('No se encontró información geográfica para esa IP');
 } catch (error) {
 if (error.response.status === 404) {
 console.log('No se encontró información geográfica para esa IP');
+} else if (error.response.status === 500) {
+console.log('Error interno del servidor');
 } else {
 console.error(`Error: ${error.message}`);
 }
