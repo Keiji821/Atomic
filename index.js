@@ -155,8 +155,7 @@ reject(`Error: ${code}`);
 }
 });
 });
-const results = output.trim().split('
-');
+const results = output.trim().split('');
 for (const result of results) {
 if (result.includes('open')) {
 console.log(`Puerto abierto: ${result}`);
