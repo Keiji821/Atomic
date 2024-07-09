@@ -44,19 +44,36 @@ bold: '[1m',
 italic: '[3m',
 };
 
+
+const portScan = async (host, ports) => {
+  const results = [];
+  for (let i = 0; i < ports.length; i++) {
+    const port = ports[i];
+    const socket = new net.Socket();
+    socket.connect(port, host, () => {
+      results.push(`${port} is open`);
+      socket.destroy();
+    });
+    socket.on('error', (err) => {
+      results.push(`${port} is closed`);
+    });
+  }
+  return results;
+};
+
 const securityScan = async (host) => {
-const ports = await portScan(host, [80, 443, 22]);
-const results = [];
+  const ports = await portScan(host, [80, 443, 22]);
+  const results = [];
 
-ports.forEach((port) => {
-if (port.includes('open')) {
-results.push(`Puerto ${port} abierto`);
-} else {
-results.push(`Puerto ${port} cerrado`);
-}
-});
+  ports.forEach((port) => {
+    if (port.includes('open')) {
+      results.push(`Puerto ${port} abierto`);
+    } else {
+      results.push(`Puerto ${port} cerrado`);
+    }
+  });
 
-return results;
+  return results;
 };
 
 const ddosAttack = async (url, numConnections, attackDuration) => {
