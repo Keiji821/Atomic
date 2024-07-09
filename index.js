@@ -138,6 +138,7 @@ console.error(`Error: ${error.message}`);
 
 const analyzeIP = async (ip) => {
 try {
+let results;
 const command = `nmap -sT -p- ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
@@ -160,6 +161,7 @@ console.log(`Puerto cerrado: ${result}`);
 console.error(`Error: ${error.message}`);
 }
 };
+
 
 const getGeoIP = async (ip) => {
 try {
