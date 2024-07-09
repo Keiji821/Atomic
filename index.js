@@ -92,8 +92,8 @@ if (error) {
 console.error(`Error: ${error.message}`);
 return;
 }
-const lines = stdout.trim().split(/[
-]+/);
+const lines = stdout.trim().split(String.raw`
+`);
 const details = [];
 for (const line of lines) {
 if (line.includes(';; ANSWER SECTION:')) {
