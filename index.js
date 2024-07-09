@@ -103,8 +103,8 @@ const [key, value] = line.split(';');
 details.push(` ${key.trim()}: ${value.trim()}`);
 }
 }
-console.log(details.join('
-'));
+console.log(details.join(String.raw`
+`));
 });
 } catch (error) {
 console.error(`Error: ${error.message}`);
