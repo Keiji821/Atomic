@@ -91,7 +91,7 @@ if (error) {
 console.error(`Error: ${error}`);
 } else {
 const info = stdout.split('
-');
+'); // Aquí estaba el error
 const details = [];
 for (const line of info) {
 if (line.includes(';; ANSWER SECTION:')) {
@@ -104,7 +104,7 @@ details.push(` ${key}: ${value}`);
 }
 }
 console.log(details.join('
-'));
+')); // Aquí también
 }
 });
 } catch (error) {
