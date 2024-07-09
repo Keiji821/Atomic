@@ -121,7 +121,7 @@ console.log('[36m ︳3. Configurar conexiones simultaneas  ︳');
 console.log('[33m ︳4. Aumentar potencia del ataque       ︳');
 console.log('[31m ︳5. Realizar análisis de seguridad     ︳');
 console.log('[31m ︳6. Salir                              ︳');
-console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
 rl.setPrompt('[37m  🌐➤ '); 
 rl.prompt(); 
 };
