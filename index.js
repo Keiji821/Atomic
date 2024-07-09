@@ -153,7 +153,6 @@ case '2':
 updateCode();
 showMenu(); 
 break;
-
 case '3':
 console.log('Ingrese el número de conexiones simultaneas: ');
 rl.question('Conexiones: ', (conexiones) => {
@@ -167,7 +166,6 @@ showMenu();
 }
 });
 break;
-
 case '4':
 console.log('Ingrese la duración del ataque (en segundos): ');
 rl.question('Duración: ', (duration) => {
@@ -199,8 +197,6 @@ rl.on('line', (option) => {
         }
       });
       break;
-
-break;
 case '6':
 console.log('Saliendo...');
 process.exit();
