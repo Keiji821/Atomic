@@ -112,7 +112,8 @@ console.error(`Error: ${error}`);
 
 const showMenu = () => {
 console.clear(); 
-console.log('[32m         DDoS attack    ');
+console.log('[31m            DDoS attack    ');
+console.log('                           ');
 console.log('⭐️ Desarrollado por Keiji821');
 console.log('[32m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
 console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
