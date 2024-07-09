@@ -138,20 +138,25 @@ console.error(`Error: ${error.message}`);
 
 const analyzeIP = async (ip) => {
 try {
-const command = `nmap -sT -p- ${ip}`;
-const stdout = await exec(command);
-const results = [];
-let line = '';
-for (let char of stdout) {
-if (char === '
-') {
-results.push(line);
-line = '';
+const nmap = spawn('nmap', ['-sT', '-p-', ip]);
+let output = '';
+nmap.stdout.on('data', (data) => {
+output += data.toString();
+});
+nmap.stderr.on('data', (data) => {
+console.error(`Error: ${data}`);
+});
+await new Promise((resolve, reject) => {
+nmap.on('close', (code) => {
+if (code === 0) {
+resolve(output);
 } else {
-line += char;
+reject(`Error: ${code}`);
 }
-}
-if (line) results.push(line);
+});
+});
+const results = output.trim().split('
+');
 for (const result of results) {
 if (result.includes('open')) {
 console.log(`Puerto abierto: ${result}`);
@@ -168,20 +173,25 @@ console.error(`Error: ${error.message}`);
 
 const getGeoIP = async (ip) => {
 try {
-const command = `diag -n ${ip}`;
-const stdout = await exec(command);
-const results = [];
-let line = '';
-for (let char of stdout) {
-if (char === '
-') {
-results.push(line);
-line = '';
+const diag = spawn('diag', ['-n', ip]);
+let output = '';
+diag.stdout.on('data', (data) => {
+output += data.toString();
+});
+diag.stderr.on('data', (data) => {
+console.error(`Error: ${data}`);
+});
+await new Promise((resolve, reject) => {
+diag.on('close', (code) => {
+if (code === 0) {
+resolve(output);
 } else {
-line += char;
+reject(`Error: ${code}`);
 }
-}
-if (line) results.push(line);
+});
+});
+const results = output.trim().split('
+');
 for (const result of results) {
 if (result.includes('country')) {
 console.log(`País: ${result}`);
