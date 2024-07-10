@@ -173,9 +173,9 @@ const getGeoIP = async (ip) => {
 try {
 const response = await axios.get(`http://ip-api.com/json/${ip}`);
 const data = response.data;
-console.log(`[32m           ╭──────────────────────╮
+console.log(`[32m                          ╭──────────────────────╮
 │ Informacion de la ip             │
-╰──────────────────────╯        `);
+╰──────────────────────╯`);
 console.log(`[31m       〔1〕  País: ${data.country}`);
 console.log(`[31m       〔2〕  Código del país: ${data.countryCode}`);
 console.log(`[31m       〔3〕  Región: ${data.region}`);
