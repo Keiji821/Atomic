@@ -74,10 +74,11 @@ const sockets = [];
 for (let i = 0; i < numConnections; i++) {
 const socket = new net.Socket();
 socket.connect(80, url, () => {
-console.log('    ');
-console.log(`[31m[1m Conectado a ${url}`);
+console.log(`[31m[1m
+ ╭─────────────────────────╮
+ │ ⚠️ [31m[1m Conectado a ${url} │
+ ╰─────────────────────────╯`);
 });
-console.log('    ');
 socket.on('data', (data) => {
 console.log(`[33m[1m Dato recibido de ${url}`);
 });
