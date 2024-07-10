@@ -170,34 +170,20 @@ console.error(`Error: ${error.message}`);
 
 
 
+const axios = require('axios');
+
 const getGeoIP = async (ip) => {
 try {
-const command = `nmap -ge ${ip}`;
-exec(command, (error, stdout, stderr) => {
-if (error) {
-console.error(`Error: ${error.message}`);
-return;
-}
-const results = stdout.trim().split(String.raw`
-`);
-if (results) {
-for (const result of results) {
-if (result.includes(' Country: ')) {
-console.log(`País: ${result.split(' Country: ')[1]}`);
-} else if (result.includes(' Region: ')) {
-console.log(`Región: ${result.split(' Region: ')[1]}`);
-} else if (result.includes(' City: ')) {
-console.log(`Ciudad: ${result.split(' City: ')[1]}`);
-}
-}
-} else {
-console.log("No hay resultados");
-}
-});
+const response = await axios.get(`http://ip-api.com/json/${ip}`);
+const data = response.data;
+console.log(`País: ${data.country}`);
+console.log(`Región: ${data.region}`);
+console.log(`Ciudad: ${data.city}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
+
 
 
 
