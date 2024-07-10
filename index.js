@@ -110,6 +110,7 @@ console.error(`Error: ${error}`);
 }
 };
 
+
 const getInfo = async (ip) => {
 try {
 const command = `dig +nocmd ${ip} any +multiline`;
@@ -126,11 +127,38 @@ if (line.includes(';; ANSWER SECTION:')) {
 details.push('** ANSWER SECTION **');
 } else if (line.includes(';')) {
 const [key, value] = line.split(';');
-details.push(` ${key.trim()}: ${value.trim()}`);
+details.push(`  ${key.trim()}: ${value.trim()}`);
+} else {
+const parts = line.split(/\s+/);
+const recordType = parts[3];
+const ttl = parts[1];
+const value = parts[4];
+switch (recordType) {
+case 'A':
+details.push(`  IP Address: ${value} (TTL: ${ttl} seconds)`);
+break;
+case 'AAAA':
+details.push(`  IPv6 Address: ${value} (TTL: ${ttl} seconds)`);
+break;
+case 'NS':
+details.push(`  Name Server: ${value} (TTL: ${ttl} seconds)`);
+break;
+case 'MX':
+details.push(`  Mail Server: ${value} (TTL: ${ttl} seconds)`);
+break;
+case 'SOA':
+details.push(`  Start of Authority: ${value} (TTL: ${ttl} seconds)`);
+break;
+default:
+details.push(`  Unknown Record Type: ${recordType} (TTL: ${ttl} seconds)`);
 }
 }
+}
+console.log(` DNS Information for ${ip}:`);
+console.log(`---------------------------`);
 console.log(details.join(String.raw`
 `));
+console.log(`---------------------------`);
 });
 } catch (error) {
 console.error(`Error: ${error.message}`);
