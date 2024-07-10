@@ -187,7 +187,7 @@ console.log(`[32m       〔06〕  [31m Latitude: [36m ${data.lat}`);
 console.log(`[32m       〔07〕  [31m Longitude: [36m ${data.lon}`);
 console.log(`[32m       〔08〕  [31m ISP: [36m ${data.isp}`);
 console.log(`[32m       〔09〕  [31m Empresa: [36m ${data.org}`);
-console.log(`[32m       〔10〕  [31m Zona horaria: [36m ${data.timezone}`);
+console.log(`[32m       〔10〕  [31m Zona horaria: [36m ${data.timezone}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
