@@ -168,17 +168,26 @@ console.error(`Error: ${error.message}`);
 };
 
 
+
 const getGeoIP = async (ip) => {
 try {
 const response = await axios.get(`http://ip-api.com/json/${ip}`);
 const data = response.data;
 console.log(`País: ${data.country}`);
+console.log(`Código del país: ${data.countryCode}`);
 console.log(`Región: ${data.region}`);
+console.log(`Código de la región: ${data.regionCode}`);
 console.log(`Ciudad: ${data.city}`);
+console.log(`Latitude: ${data.lat}`);
+console.log(`Longitude: ${data.lon}`);
+console.log(`ISP: ${data.isp}`);
+console.log(`Organización: ${data.org}`);
+console.log(`Zona horaria: ${data.timezone}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
+
 
 
 rl.on('line', (option) => {
