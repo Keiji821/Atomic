@@ -168,7 +168,6 @@ console.error(`Error: ${error.message}`);
 
 const analyzeIP = async (ip) => {
 try {
-let results;
 const command = `nmap -sT -p- ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
@@ -177,18 +176,32 @@ return;
 }
 const lines = stdout.trim().split(String.raw`
 `);
-if (results) {
-for (const result of results) {
-if (result.includes('open')) {
-console.log(`Puerto abierto: ${result}`);
-} else if (result.includes('filtered')) {
-console.log(`Puerto filtrado: ${result}`);
-} else if (result.includes('closed')) {
-console.log(`Puerto cerrado: ${result}`);
+let openPorts = [];
+let filteredPorts = [];
+let closedPorts = [];
+for (const line of lines) {
+if (line.includes('open')) {
+const port = line.split(' ')[0];
+openPorts.push(port);
+} else if (line.includes('filtered')) {
+const port = line.split(' ')[0];
+filteredPorts.push(port);
+} else if (line.includes('closed')) {
+const port = line.split(' ')[0];
+closedPorts.push(port);
 }
 }
-} else {
-console.log("[36m[1m No hay resultados");
+if (openPorts.length > 0) {
+console.log(` Puertos abiertos: ${openPorts.join(', ')}`);
+}
+if (filteredPorts.length > 0) {
+console.log(` Puertos filtrados: ${filteredPorts.join(', ')}`);
+}
+if (closedPorts.length > 0) {
+console.log(` Puertos cerrados: ${closedPorts.join(', ')}`);
+}
+if (openPorts.length === 0 && filteredPorts.length === 0 && closedPorts.length === 0) {
+console.log(`[36m[1m No hay resultados`);
 }
 });
 } catch (error) {
