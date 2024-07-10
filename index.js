@@ -60,7 +60,7 @@ const showMenu = () => {
   console.log('               ');
   console.log('[32m【0[32m】❌️ [31m[1m Salir');
   console.log('               ');
-  rl.setPrompt('[37m[1m 🌐➤ ');
+  rl.setPrompt('[37m[1m  🌐➤ ');
   rl.prompt();
 };
 
