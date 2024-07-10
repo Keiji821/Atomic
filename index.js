@@ -239,8 +239,8 @@ console.error(`Error: ${error.message}`);
 rl.on('line', (option) => {
 switch (option.trim()) {
 case '1':
-console.log('[36m[1m Ingrese la URL del objetivo');
-rl.question('[32m[1m URL: ', (url) => {
+console.log('[36m[1m Ingrese la URL o IP del objetivo');
+rl.question('[32m[1m IP/Dominio: ', (url) => {
 if (url === '') {
 console.log('[33m[1m URL invalida');
 showMenu();
