@@ -58,7 +58,7 @@ const showMenu = () => {
   console.log('[32m【6[32m】 [37m[1m Análisis de IP');
   console.log('[32m【7[32m】 [37m[1m Información geográfica de IP');
   console.log('               ');
-  console.log('[32m【8[32m】❌️ [31m[1m Salir');
+  console.log('[32m【0[32m】❌️ [31m[1m Salir');
   console.log('               ');
   rl.setPrompt('[37m[1m  🌐➤ ');
   rl.prompt();
@@ -168,7 +168,7 @@ console.error(`Error: ${error.message}`);
 
 const analyzeIP = async (ip) => {
 try {
-const command = `nmap -sT -p- ${ip}`;
+const command = `nslookup ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error.message}`);
@@ -176,32 +176,14 @@ return;
 }
 const lines = stdout.trim().split(String.raw`
 `);
-let openPorts = [];
-let filteredPorts = [];
-let closedPorts = [];
 for (const line of lines) {
-if (line.includes('open')) {
-const port = line.split(' ')[0];
-openPorts.push(port);
-} else if (line.includes('filtered')) {
-const port = line.split(' ')[0];
-filteredPorts.push(port);
-} else if (line.includes('closed')) {
-const port = line.split(' ')[0];
-closedPorts.push(port);
+if (line.includes('address')) {
+const address = line.split(':')[1].trim();
+console.log(` Dirección IP: ${address}`);
+} else if (line.includes('servername')) {
+const servername = line.split(':')[1].trim();
+console.log(` Servidor: ${servername}`);
 }
-}
-if (openPorts.length > 0) {
-console.log(` Puertos abiertos: ${openPorts.join(', ')}`);
-}
-if (filteredPorts.length > 0) {
-console.log(` Puertos filtrados: ${filteredPorts.join(', ')}`);
-}
-if (closedPorts.length > 0) {
-console.log(` Puertos cerrados: ${closedPorts.join(', ')}`);
-}
-if (openPorts.length === 0 && filteredPorts.length === 0 && closedPorts.length === 0) {
-console.log(`[36m[1m No hay resultados`);
 }
 });
 } catch (error) {
@@ -316,7 +298,7 @@ showMenu();
 }
 });
 break;
-case '8':
+case '0':
 console.log('[32m[1m Saliendo...');
 process.exit();
 break;
