@@ -174,15 +174,15 @@ try {
 const response = await axios.get(`http://ip-api.com/json/${ip}`);
 const data = response.data;
 console.log(`[31m ❬1️⃣❭ País: ${data.country}`);
-console.log(`[31m       ❬2️⃣❭ Código del país: ${data.countryCode}`);
-console.log(`[31m       ❬3️⃣❭ Región: ${data.region}`);
-console.log(`[31m       ❬4️⃣❭ Código de la región: ${data.regionCode}`);
-console.log(`[31m       ❬5️⃣❭ Ciudad: ${data.city}`);
-console.log(`[31m       ❬6️⃣❭ Latitude: ${data.lat}`);
-console.log(`[31m       ❬7️⃣❭ Longitude: ${data.lon}`);
-console.log(`[31m       ❬8️⃣❭ ISP: ${data.isp}`);
-console.log(`[31m       ❬9️⃣❭ Organización: ${data.org}`);
-console.log(`[31m       ❬🔟❭ Zona horaria: ${data.timezone}`);
+console.log(`[31m      ❬2️⃣❭ Código del país: ${data.countryCode}`);
+console.log(`[31m      ❬3️⃣❭ Región: ${data.region}`);
+console.log(`[31m      ❬4️⃣❭ Código de la región: ${data.regionCode}`);
+console.log(`[31m      ❬5️⃣❭ Ciudad: ${data.city}`);
+console.log(`[31m      ❬6️⃣❭ Latitude: ${data.lat}`);
+console.log(`[31m      ❬7️⃣❭ Longitude: ${data.lon}`);
+console.log(`[31m      ❬8️⃣❭ ISP: ${data.isp}`);
+console.log(`[31m      ❬9️⃣❭ Organización: ${data.org}`);
+console.log(`[31m      ❬🔟❭ Zona horaria: ${data.timezone}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
