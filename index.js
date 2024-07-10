@@ -176,13 +176,13 @@ const data = response.data;
 console.log(`[31m País: ${data.country}`);
 console.log(`[31m     Código del país: ${data.countryCode}`);
 console.log(`[31m     Región: ${data.region}`);
-console.log(`[31m     Código de la región: ${data.regionCode}`);
-console.log(`[31m     Ciudad: ${data.city}`);
-console.log(`[31m     Latitude: ${data.lat}`);
-console.log(`[31m     Longitude: ${data.lon}`);
-console.log(`[31m     ISP: ${data.isp}`);
-console.log(`[31m     Organización: ${data.org}`);
-console.log(`[31m     Zona horaria: ${data.timezone}`);
+console.log(`[31m      Código de la región: ${data.regionCode}`);
+console.log(`[31m      Ciudad: ${data.city}`);
+console.log(`[31m      Latitude: ${data.lat}`);
+console.log(`[31m      Longitude: ${data.lon}`);
+console.log(`[31m      ISP: ${data.isp}`);
+console.log(`[31m      Organización: ${data.org}`);
+console.log(`[31m      Zona horaria: ${data.timezone}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
