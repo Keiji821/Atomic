@@ -57,7 +57,8 @@ const showMenu = () => {
   console.log('[32m【5[32m】 [33m[1m Sacar información de IP');
   console.log('[32m【6[32m】 [33m[1m Análisis de IP');
   console.log('[32m【7[32m】 [33m[1m Información geográfica de IP');
-  console.log('[32m【8[32m】 [31m[1m Salir');
+  console.log('               ');
+  console.log('[32m【8[32m】❌️ [31m[1m Salir');
   console.log('               ');
   rl.setPrompt('[37m[1m  🌐➤ ');
   rl.prompt();
