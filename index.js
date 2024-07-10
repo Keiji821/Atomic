@@ -169,9 +169,10 @@ console.error(`Error: ${error.message}`);
 
 
 
+
 const getGeoIP = async (ip) => {
 try {
-const command = `nmap -ge --script ip-geolocation-maxmind,ip-geolocation-geoip,ip-geolocation-asn,ip-geolocation-whois ${ip}`;
+const command = `nmap -ge ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error.message}`);
@@ -187,20 +188,6 @@ console.log(`País: ${result.split(' Country: ')[1]}`);
 console.log(`Región: ${result.split(' Region: ')[1]}`);
 } else if (result.includes(' City: ')) {
 console.log(`Ciudad: ${result.split(' City: ')[1]}`);
-} else if (result.includes(' ISP: ')) {
-console.log(`ISP: ${result.split(' ISP: ')[1]}`);
-} else if (result.includes(' Organization: ')) {
-console.log(`Organización: ${result.split(' Organization: ')[1]}`);
-} else if (result.includes(' Domain: ')) {
-console.log(`Dominio: ${result.split(' Domain: ')[1]}`);
-} else if (result.includes(' Timezone: ')) {
-console.log(`Zona horaria: ${result.split(' Timezone: ')[1]}`);
-} else if (result.includes(' Zipcode: ')) {
-console.log(`Código postal: ${result.split(' Zipcode: ')[1]}`);
-} else if (result.includes(' Latitude: ')) {
-console.log(`Latitud: ${result.split(' Latitude: ')[1]}`);
-} else if (result.includes(' Longitude: ')) {
-console.log(`Longitud: ${result.split(' Longitude: ')[1]}`);
 }
 }
 } else {
