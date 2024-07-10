@@ -168,10 +168,6 @@ console.error(`Error: ${error.message}`);
 };
 
 
-
-
-const axios = require('axios');
-
 const getGeoIP = async (ip) => {
 try {
 const response = await axios.get(`http://ip-api.com/json/${ip}`);
@@ -183,9 +179,6 @@ console.log(`Ciudad: ${data.city}`);
 console.error(`Error: ${error.message}`);
 }
 };
-
-
-
 
 
 rl.on('line', (option) => {
