@@ -57,8 +57,8 @@ const showMenu = () => {
   console.log('[31m ︳5. Sacar información de IP            ︳');
   console.log('[33m ︳6. Análisis de IP                     ︳');
   console.log('[34m ︳7. Información geográfica de IP       ︳');
-  console.log('[31m ︳8. Salir                              ︳');
-  console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+  console.log('[31m ︳8. Salir                              ︳');
+  console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
   rl.setPrompt('[37m  🌐➤ ');
   rl.prompt();
 };
