@@ -168,9 +168,10 @@ console.error(`Error: ${error.message}`);
 };
 
 
+
 const getGeoIP = async (ip) => {
 try {
-const command = `diagtool -n ${ip}`;
+const command = `nmap -ge --script ip-geolocation-maxmind,ip-geolocation-ip2location,ip-geolocation-geoip,ip-geolocation-asn,ip-geolocation-whois,ip-geolocation-os,ip-geolocation-router,ip-geolocation-network ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error.message}`);
@@ -180,12 +181,36 @@ const lines = stdout.trim().split(String.raw`
 `);
 if (results) {
 for (const result of results) {
-if (result.includes('country')) {
-console.log(`País: ${result}`);
-} else if (result.includes('region')) {
-console.log(`Región: ${result}`);
-} else if (result.includes('city')) {
-console.log(`Ciudad: ${result}`);
+if (result.includes(' Country: ')) {
+console.log(`País: ${result.split(' Country: ')[1]}`);
+} else if (result.includes(' Region: ')) {
+console.log(`Región: ${result.split(' Region: ')[1]}`);
+} else if (result.includes(' City: ')) {
+console.log(`Ciudad: ${result.split(' City: ')[1]}`);
+} else if (result.includes(' ISP: ')) {
+console.log(`ISP: ${result.split(' ISP: ')[1]}`);
+} else if (result.includes(' Organization: ')) {
+console.log(`Organización: ${result.split(' Organization: ')[1]}`);
+} else if (result.includes(' Domain: ')) {
+console.log(`Dominio: ${result.split(' Domain: ')[1]}`);
+} else if (result.includes(' Timezone: ')) {
+console.log(`Zona horaria: ${result.split(' Timezone: ')[1]}`);
+} else if (result.includes(' Zipcode: ')) {
+console.log(`Código postal: ${result.split(' Zipcode: ')[1]}`);
+} else if (result.includes(' Latitude: ')) {
+console.log(`Latitud: ${result.split(' Latitude: ')[1]}`);
+} else if (result.includes(' Longitude: ')) {
+console.log(`Longitud: ${result.split(' Longitude: ')[1]}`);
+} else if (result.includes(' Connection type: ')) {
+console.log(`Tipo de conexión: ${result.split(' Connection type: ')[1]}`);
+} else if (result.includes(' Connection speed: ')) {
+console.log(`Velocidad de conexión: ${result.split(' Connection speed: ')[1]}`);
+} else if (result.includes(' OS: ')) {
+console.log(`Sistema operativo: ${result.split(' OS: ')[1]}`);
+} else if (result.includes(' Router: ')) {
+console.log(`Router: ${result.split(' Router: ')[1]}`);
+} else if (result.includes(' Network: ')) {
+console.log(`Red: ${result.split(' Network: ')[1]}`);
 }
 }
 } else {
@@ -196,6 +221,8 @@ console.log("No hay resultados");
 console.error(`Error: ${error.message}`);
 }
 };
+
+
 
 rl.on('line', (option) => {
 switch (option.trim()) {
