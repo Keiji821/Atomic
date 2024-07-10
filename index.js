@@ -178,16 +178,16 @@ console.log(`[32m[1m
  ╭─────────────────────────╮
  │ 🌕 Informacion de la ip │
  ╰─────────────────────────╯`);
-console.log(`[32m[1m       〔[36m01[0m〕  [31m País: [36m ${data.country}`);
-console.log(`[32m[1m       〔[36m02[0m〕  [31m Código del país: [36m ${data.countryCode}`);
-console.log(`[32m[1m       〔[36m03[0m〕  [31m Región: [36m ${data.region}`);
-console.log(`[32m[1m       〔[36m04[0m〕  [31m Código de la región: [36m ${data.regionCode}`);
-console.log(`[32m[1m       〔[36m05[0m〕  [31m Ciudad: [36m ${data.city}`);
-console.log(`[32m[1m       〔[36m06[0m〕  [31m Latitude: [36m ${data.lat}`);
-console.log(`[32m[1m       〔[36m07[0m〕  [31m Longitude: [36m ${data.lon}`);
-console.log(`[32m[1m       〔[36m08[0m〕  [31m ISP: [36m ${data.isp}`);
-console.log(`[32m[1m       〔[36m09[0m〕  [31m Empresa: [36m ${data.org}`);
-console.log(`[32m[1m       〔[36m10[0m〕  [31m  Zona horaria: [36m ${data.timezone}`);
+console.log(`[32m[1m       〔[36m01[32m〕  [31m[1m País: [36m ${data.country}`);
+console.log(`[32m[1m       〔[36m02[32m〕  [31m[1m Código del país: [36m ${data.countryCode}`);
+console.log(`[32m[1m       〔[36m03[32m〕  [31m[1m Región: [36m ${data.region}`);
+console.log(`[32m[1m       〔[36m04[32m〕  [31m[1m Código de la región: [36m ${data.regionCode}`);
+console.log(`[32m[1m       〔[36m05[32m〕  [31m[1m Ciudad: [36m ${data.city}`);
+console.log(`[32m[1m       〔[36m06[32m〕  [31m[1m Latitude: [36m ${data.lat}`);
+console.log(`[32m[1m       〔[36m07[32m〕  [31m[1m Longitude: [36m ${data.lon}`);
+console.log(`[32m[1m       〔[36m08[32m〕  [31m[1m ISP: [36m ${data.isp}`);
+console.log(`[32m[1m       〔[36m09[32m〕  [31m[1m Empresa: [36m ${data.org}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Zona horaria: [36m ${data.timezone}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
