@@ -49,17 +49,17 @@ const showMenu = () => {
   console.clear();
   console.log('[31m[1m             DDoS attack    ');
   console.log('[36m[1m      ⭐️ Desarrollado por Keiji821');
-  console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
-  console.log('[33m[1m ︳【[32m1[32m】 [33m[1mIniciar ataque DDoS                ︳');
-  console.log('[33m[1m ︳【[32m2[32m】 [33m[1mActualizar código                  ︳');
-  console.log('[33m[1m ︳【[36m3[32m】 [33m[1mConfigurar conexiones simultaneas  ︳');
-  console.log('[33m[1m ︳【[32m4[32m】 [33m[1mAumentar potencia del ataque       ︳');
-  console.log('[33m[1m ︳【[32m5[32m】 [33m[1mSacar información de IP            ︳');
-  console.log('[33m[1m ︳【[32m6[32m】 [33m[1mAnálisis de IP                     ︳');
-  console.log('[33m[1m ︳【[36m7[32m】 [33m[1mInformación geográfica de IP       ︳');
-  console.log('[33m ︳【[32m8[32m】 [31m[1mSalir                              ︳');
-  console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
-  rl.setPrompt('[37m  🌐➤ ');
+  console.log('[36m[1m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
+  console.log('[33m[1m ︳[32m【1[32m】 [33m[1mIniciar ataque DDoS                ︳');
+  console.log('[33m[1m ︳[32m【2[32m】 [33m[1mActualizar código                  ︳');
+  console.log('[33m[1m ︳[32m【3[32m】 [33m[1mConfigurar conexiones simultaneas  ︳');
+  console.log('[33m[1m ︳[32m【4[32m】 [33m[1mAumentar potencia del ataque       ︳');
+  console.log('[33m[1m ︳[32m【5[32m】 [33m[1mSacar información de IP            ︳');
+  console.log('[33m[1m ︳[32m【6[32m】 [33m[1mAnálisis de IP                     ︳');
+  console.log('[33m[1m ︳[32m【7[32m】 [33m[1mInformación geográfica de IP       ︳');
+  console.log('[33m[1m ︳[32m【8[32m】 [31m[1mSalir                              ︳');
+  console.log('[36m[1m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+  rl.setPrompt('[37m[1m  🌐➤ ');
   rl.prompt();
 };
 
