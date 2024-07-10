@@ -159,7 +159,7 @@ console.log(`Puerto cerrado: ${result}`);
 }
 }
 } else {
-console.log("No hay resultados");
+console.log("[36m No hay resultados");
 }
 });
 } catch (error) {
@@ -174,15 +174,15 @@ try {
 const response = await axios.get(`http://ip-api.com/json/${ip}`);
 const data = response.data;
 console.log(`[31m ❬1️⃣❭ País: ${data.country}`);
-console.log(`[31m      ❬2️⃣❭ Código del país: ${data.countryCode}`);
-console.log(`[31m      ❬3️⃣❭ Región: ${data.region}`);
-console.log(`[31m      ❬4️⃣❭ Código de la región: ${data.regionCode}`);
-console.log(`[31m      ❬5️⃣❭ Ciudad: ${data.city}`);
-console.log(`[31m      ❬6️⃣❭ Latitude: ${data.lat}`);
-console.log(`[31m      ❬7️⃣❭ Longitude: ${data.lon}`);
-console.log(`[31m      ❬8️⃣❭ ISP: ${data.isp}`);
-console.log(`[31m      ❬9️⃣❭ Organización: ${data.org}`);
-console.log(`[31m      ❬🔟❭ Zona horaria: ${data.timezone}`);
+console.log(`[31m       ❬2️⃣❭ Código del país: ${data.countryCode}`);
+console.log(`[31m       ❬3️⃣❭ Región: ${data.region}`);
+console.log(`[31m       ❬4️⃣❭ Código de la región: ${data.regionCode}`);
+console.log(`[31m       ❬5️⃣❭ Ciudad: ${data.city}`);
+console.log(`[31m       ❬6️⃣❭ Latitude: ${data.lat}`);
+console.log(`[31m       ❬7️⃣❭ Longitude: ${data.lon}`);
+console.log(`[31m       ❬8️⃣❭ ISP: ${data.isp}`);
+console.log(`[31m       ❬9️⃣❭ Organización: ${data.org}`);
+console.log(`[31m       ❬🔟❭ Zona horaria: ${data.timezone}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
@@ -192,10 +192,10 @@ console.error(`Error: ${error.message}`);
 rl.on('line', (option) => {
 switch (option.trim()) {
 case '1':
-console.log('Ingrese la URL del objetivo: ');
-rl.question('URL: ', (url) => {
+console.log('[36m Ingrese la URL del objetivo');
+rl.question('[32m URL: ', (url) => {
 if (url === '') {
-console.log('URL invalida');
+console.log('[33m URL invalida');
 showMenu();
 } else {
 ddosAttack(url, numConnections, attackDuration);
@@ -208,36 +208,36 @@ updateCode();
 showMenu(); // Volver a mostrar el menú principal
 break;
 case '3':
-console.log('Ingrese el número de conexiones simultaneas: ');
-rl.question('Conexiones: ', (conexiones) => {
+console.log('[36m Ingrese el número de conexiones simultaneas');
+rl.question('[32m Conexiones: ', (conexiones) => {
 if (conexiones === '') {
-console.log('Valor invalido');
+console.log('[31m Valor invalido');
 showMenu();
 } else {
 numConnections = parseInt(conexiones);
-console.log(`Conexiones simultaneas establecidas en ${numConnections}`);
+console.log(`[36m Conexiones simultaneas establecidas en ${numConnections}`);
 showMenu(); // Volver a mostrar el menú principal
 }
 });
 break;
 case '4':
-console.log('Ingrese la duración del ataque (en segundos):>');
+console.log('[36m Ingrese la duración del ataque (en segundos):>');
 rl.question('Duración: ', (duration) => {
 if (duration === '') {
-console.log('Valor invalido');
+console.log('[31m Valor invalido');
 showMenu();
 } else {
 attackDuration = parseInt(duration);
-console.log(`Duración del ataque establecida en ${attackDuration} segundos`);
+console.log(`[36m Duración del ataque establecida en ${attackDuration} segundos`);
 showMenu(); // Volver a mostrar el menú principal
 }
 });
 break;
 case '5':
-console.log('Ingrese la IP para obtener información: ');
-rl.question('IP: ', (ip) => {
+console.log('[36m Ingrese la IP para obtener información');
+rl.question('[32m IP: ', (ip) => {
 if (ip === '') {
-console.log('IP invalida');
+console.log('[36m IP invalida');
 showMenu();
 } else {
 getInfo(ip);
@@ -246,10 +246,10 @@ showMenu();
 });
 break;
 case '6':
-console.log('Ingrese la IP para análisis: ');
-rl.question('IP: ', (ip) => {
+console.log('[36m Ingrese la IP para análisis ');
+rl.question('[32m IP: ', (ip) => {
 if (ip === '') {
-console.log('IP invalida');
+console.log('[31m IP invalida');
 showMenu();
 } else {
 analyzeIP(ip);
@@ -258,10 +258,10 @@ showMenu();
 });
 break;
 case '7':
-console.log('Ingrese la IP para obtener información geográfica: ');
-rl.question('IP: ', (ip) => {
+console.log('[36m Ingrese la IP para obtener información geográfica');
+rl.question('[32m IP: ', (ip) => {
 if (ip === '') {
-console.log('IP invalida');
+console.log('[31m IP invalida');
 showMenu();
 } else {
 getGeoIP(ip);
@@ -274,7 +274,7 @@ console.log('Saliendo...');
 process.exit();
 break;
 default:
-console.log('Opción invalida');
+console.log('[31m Opción invalida');
 showMenu();
 }
 }).on('close', () => {
