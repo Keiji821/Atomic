@@ -171,7 +171,7 @@ console.error(`Error: ${error.message}`);
 
 const getGeoIP = async (ip) => {
 try {
-const command = `nmap -ge --script ip-geolocation-maxmind,ip-geolocation-ip2location,ip-geolocation-geoip,ip-geolocation-asn,ip-geolocation-whois ${ip}`;
+const command = `nmap -ge --script ip-geolocation-maxmind,ip-geolocation-geoip,ip-geolocation-asn,ip-geolocation-whois ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error.message}`);
@@ -211,6 +211,7 @@ console.log("No hay resultados");
 console.error(`Error: ${error.message}`);
 }
 };
+
 
 
 
