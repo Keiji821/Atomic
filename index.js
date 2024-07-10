@@ -47,7 +47,7 @@ const { exec } = require('child_process');
 
 const showMenu = () => {
   console.clear();
-  console.log('[31m            DDoS attack    ');
+  console.log('[31m             DDoS attack    ');
   console.log('      ⭐️ Desarrollado por Keiji821');
   console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
   console.log('[32m ︳1. Iniciar ataque DDoS                ︳');
@@ -58,7 +58,7 @@ const showMenu = () => {
   console.log('[33m ︳6. Análisis de IP                     ︳');
   console.log('[34m ︳7. Información geográfica de IP       ︳');
   console.log('[31m ︳8. Salir                              ︳');
-  console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
+  console.log('[36m ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
   rl.setPrompt('[37m  🌐➤ ');
   rl.prompt();
 };
