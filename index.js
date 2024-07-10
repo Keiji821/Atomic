@@ -202,16 +202,29 @@ console.log(`[32m[1m
  ╭─────────────────────────╮
  │ 🌕 Informacion de la IP │
  ╰─────────────────────────╯`);
-console.log(`[32m[1m       〔[36m01[32m〕  [31m[1m País: [36m ${data.country}`);
-console.log(`[32m[1m       〔[36m02[32m〕  [31m[1m Código del país: [36m ${data.countryCode}`);
-console.log(`[32m[1m       〔[36m03[32m〕  [31m[1m Región: [36m ${data.region}`);
-console.log(`[32m[1m       〔[36m04[32m〕  [31m[1m Código de la región: [36m ${data.regionCode}`);
-console.log(`[32m[1m       〔[36m05[32m〕  [31m[1m Ciudad: [36m ${data.city}`);
-console.log(`[32m[1m       〔[36m06[32m〕  [31m[1m Latitude: [36m ${data.lat}`);
-console.log(`[32m[1m       〔[36m07[32m〕  [31m[1m Longitude: [36m ${data.lon}`);
-console.log(`[32m[1m       〔[36m08[32m〕  [31m[1m ISP: [36m ${data.isp}`);
-console.log(`[32m[1m       〔[36m09[32m〕  [31m[1m Empresa: [36m ${data.org}`);
+console.log(`[32m[1m       〔[36m01[32m〕  [31m[1m IP: [36m ${data.query}`);
+console.log(`[32m[1m       〔[36m02[32m〕  [31m[1m Estatus: [36m ${data.status}`);
+console.log(`[32m[1m       〔[36m03[32m〕  [31m[1m Continente: [36m ${data.continent}`);
+console.log(`[32m[1m       〔[36m04[32m〕  [31m[1m Código del continente: [36m ${data.continentCode}`);
+console.log(`[32m[1m       〔[36m05[32m〕  [31m[1m País: [36m ${data.country}`);
+console.log(`[32m[1m       〔[36m06[32m〕  [31m[1m Código del país: [36m ${data.countryCode}`);
+console.log(`[32m[1m       〔[36m07[32m〕  [31m[1m Región: [36m ${data.region}`);
+console.log(`[32m[1m       〔[36m08[32m〕  [31m[1m Estado: [36m ${data.regionName}`);
+console.log(`[32m[1m       〔[36m09[32m〕  [31m[1m Ciudad: [36m ${data.city}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Distrito: [36m ${data.district}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Código postal: [36m ${data.zip}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Latitud: [36m ${data.lat}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Longitud: [36m ${data.lon}`);
 console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Zona horaria: [36m ${data.timezone}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Offset: [36m ${data.offset}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Moneda: [36m ${data.currency}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  ISP: [36m ${data.isp}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Empresa: [36m ${data.org}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  AS: [36m ${data.as}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Nombre de AS: [36m ${data.asname}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Es un celular: [36m ${data.mobile}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Es un proxy: [36m ${data.proxy}`);
+console.log(`[32m[1m       〔[36m10[32m〕  [31m[1m  Es un hosting: [36m ${data.hosting}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
