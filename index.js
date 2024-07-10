@@ -178,16 +178,16 @@ console.log(`[32m
  ╭─────────────────────────╮
  │ 🌕 Informacion de la ip │
  ╰─────────────────────────╯`);
-console.log(`[31m       〔1〕  País: ${data.country}`);
-console.log(`[31m       〔2〕  Código del país: ${data.countryCode}`);
-console.log(`[31m       〔3〕  Región: ${data.region}`);
-console.log(`[31m       〔4〕  Código de la región: ${data.regionCode}`);
-console.log(`[31m       〔5〕  Ciudad: ${data.city}`);
-console.log(`[31m       〔6〕  Latitude: ${data.lat}`);
-console.log(`[31m       〔7〕  Longitude: ${data.lon}`);
-console.log(`[31m       〔8〕  ISP: ${data.isp}`);
-console.log(`[31m       〔9〕  Organización: ${data.org}`);
-console.log(`[31m       〔10〕 Zona horaria: ${data.timezone}`);
+console.log(`[32m       〔1〕  [31m País: ${data.country}`);
+console.log(`[32m       〔2〕  [31m Código del país: ${data.countryCode}`);
+console.log(`[32m       〔3〕  [31m Región: ${data.region}`);
+console.log(`[32m       〔4〕  [31m Código de la región: ${data.regionCode}`);
+console.log(`[32m       〔5〕  [31m Ciudad: ${data.city}`);
+console.log(`[32m       〔6〕  [31m Latitude: ${data.lat}`);
+console.log(`[32m       〔7〕  [31m Longitude: ${data.lon}`);
+console.log(`[32m       〔8〕  [31m ISP: ${data.isp}`);
+console.log(`[32m       〔9〕  [31m Empresa: ${data.org}`);
+console.log(`[32m       〔10〕 [31m Zona horaria: ${data.timezone}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
