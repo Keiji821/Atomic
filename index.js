@@ -50,14 +50,14 @@ const showMenu = () => {
   console.log('[31m[1m              DDoS attack    ');
   console.log('[36m[1m      ⭐️ Desarrollado por Keiji821');
   console.log('[36m ⸂⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⸃');
-  console.log('[33m[1m ︳【1】 [33m[1m Iniciar ataque DDoS                ︳');
-  console.log('[33m[1m ︳【2】 [33m[1m Actualizar código                  ︳');
-  console.log('[33m[1m ︳【3】 [33m[1m Configurar conexiones simultaneas  ︳');
-  console.log('[33m[1m ︳【4】 [33m[1m Aumentar potencia del ataque       ︳');
-  console.log('[33m[1m ︳【5】 [33m[1m Sacar información de IP            ︳');
-  console.log('[33m[1m ︳【6】 [33m[1m Análisis de IP                     ︳');
-  console.log('[33m[1m ︳【7】 [33m[1m Información geográfica de IP       ︳');
-  console.log('[33m[1m ︳【8】 [31m[1m Salir                              ︳');
+  console.log('[33m[1m ︳[1] [33m[1m Iniciar ataque DDoS                ︳');
+  console.log('[33m[1m ︳[2] [33m[1m Actualizar código                  ︳');
+  console.log('[33m[1m ︳[3] [33m[1m Configurar conexiones simultaneas  ︳');
+  console.log('[33m[1m ︳[4] [33m[1m Aumentar potencia del ataque       ︳');
+  console.log('[33m[1m ︳[5] [33m[1m Sacar información de IP            ︳');
+  console.log('[33m[1m ︳[6] [33m[1m Análisis de IP                     ︳');
+  console.log('[33m[1m ︳[7] [33m[1m Información geográfica de IP       ︳');
+  console.log('[33m[1m ︳[8] [31m[1m Salir                              ︳');
   console.log('[36m  ⸌⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⸍');
   rl.setPrompt('[37m[1m  🌐➤ ');
   rl.prompt();
@@ -176,7 +176,7 @@ const data = response.data;
 console.log(` `);
 console.log(`[32m[1m 
  ╭─────────────────────────╮
- │ 🌕 Informacion de la ip │
+ │ 🌕 Informacion de la IP │
  ╰─────────────────────────╯`);
 console.log(`[32m[1m       〔[36m01[32m〕  [31m[1m País: [36m ${data.country}`);
 console.log(`[32m[1m       〔[36m02[32m〕  [31m[1m Código del país: [36m ${data.countryCode}`);
