@@ -171,13 +171,13 @@ console.error(`Error: ${error.message}`);
 
 const getGeoIP = async (ip) => {
 try {
-const command = `nmap -ge --script ip-geolocation-maxmind,ip-geolocation-ip2location,ip-geolocation-geoip,ip-geolocation-asn,ip-geolocation-whois,ip-geolocation-os,ip-geolocation-router,ip-geolocation-network ${ip}`;
+const command = `nmap -ge --script ip-geolocation-maxmind,ip-geolocation-ip2location,ip-geolocation-geoip,ip-geolocation-asn,ip-geolocation-whois ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error.message}`);
 return;
 }
-const lines = stdout.trim().split(String.raw`
+const results = stdout.trim().split(String.raw`
 `);
 if (results) {
 for (const result of results) {
@@ -201,16 +201,6 @@ console.log(`Código postal: ${result.split(' Zipcode: ')[1]}`);
 console.log(`Latitud: ${result.split(' Latitude: ')[1]}`);
 } else if (result.includes(' Longitude: ')) {
 console.log(`Longitud: ${result.split(' Longitude: ')[1]}`);
-} else if (result.includes(' Connection type: ')) {
-console.log(`Tipo de conexión: ${result.split(' Connection type: ')[1]}`);
-} else if (result.includes(' Connection speed: ')) {
-console.log(`Velocidad de conexión: ${result.split(' Connection speed: ')[1]}`);
-} else if (result.includes(' OS: ')) {
-console.log(`Sistema operativo: ${result.split(' OS: ')[1]}`);
-} else if (result.includes(' Router: ')) {
-console.log(`Router: ${result.split(' Router: ')[1]}`);
-} else if (result.includes(' Network: ')) {
-console.log(`Red: ${result.split(' Network: ')[1]}`);
 }
 }
 } else {
