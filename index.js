@@ -175,21 +175,6 @@ console.error(`Error: ${error.message}`);
 const Spinner = require('cli-spinner').Spinner;
 const chalk = require('chalk');
 
-const analyzeIP = async (ip) => {
-try {
-const spinner = new Spinner('Iniciando análisis de %s...'.green);
-spinner.setSpinnerString(18);
-spinner.start();
-
-const command = `nmap -A -T4 ${ip}`;
-exec(command, (error, stdout, stderr) => {
-if (error) {
-console.error(`Error: ${error.message}`);
-return;
-}
-const lines = stdout.trim().split(String.raw`
-`);
-
 let os = '';
 let hostname = '';
 let address = '';
@@ -208,6 +193,20 @@ let ipIdSequence = '';
 let osCPE = '';
 let osGeneration = '';
 let banner = '';
+
+const analyzeIP = async (ip) => {
+try {
+const spinner = new Spinner('Iniciando análisis de %s...'.green);
+spinner.setSpinnerString(18);
+spinner.start();
+
+const command = `nmap -A -T4 ${ip}`;
+exec(command, (error, stdout, stderr) => {
+if (error) {
+console.error(`Error: ${error.message}`);
+return;
+}
+const lines = stdout.trim().split(String.raw``);
 
 for (const line of lines) {
 if (line.includes('Nmap scan report for')) {
@@ -258,6 +257,7 @@ osCPE = line.split(':')[1].trim();
 } else if (line.includes('OS Generation:')) {
 osGeneration = line.split(':')[1].trim();
 }
+}
 
 spinner.stop();
 console.log(`PUERTOS: ${openPorts.join(', ') || 'Sin resultados'} (Abiertos), ${closedPorts.join(', ') || 'Sin resultados'} (Cerrados), ${filteredPorts.join(', ') || 'Sin resultados'} (Filtrados), ${unfilteredPorts.join(', ') || 'Sin resultados'} (No Filtrados)`);
@@ -284,9 +284,11 @@ console.log(`  Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`
 console.log(`  Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
 console.log(`  CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
 console.log(`  Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
+});
 } catch (error) {
-  console.error(`Error: ${error.message}`);
+console.error(`Error: ${error.message}`);
 }
+};
 
 
 
