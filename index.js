@@ -226,7 +226,7 @@ openPorts.push(`${port}/tcp`);
 const port = line.split(' ')[0].trim();
 closedPorts.push(`${port}/tcp`);
 } else if (line.includes('filtered')) {
-const port = line(split(' ')[0].trim();
+const port = line.split(' ')[0].trim();
 filteredPorts.push(`${port}/tcp`);
 } else if (line.includes('unfiltered')) {
 const port = line.split(' ')[0].trim();
