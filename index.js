@@ -173,8 +173,15 @@ console.error(`Error: ${error.message}`);
 
 
 
+const Spinner = require('cli-spinner').Spinner;
+const chalk = require('chalk');
+
 const analyzeIP = async (ip) => {
 try {
+const spinner = new Spinner('Iniciando análisis de %s...'.green);
+spinner.setSpinnerString(18);
+spinner.start();
+
 const command = `nmap -A -T4 ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
@@ -201,6 +208,7 @@ let tcpSequence = '';
 let ipIdSequence = '';
 let osCPE = '';
 let osGeneration = '';
+let banner = '';
 
 for (const line of lines) {
 if (line.includes('Nmap scan report for')) {
@@ -215,62 +223,47 @@ console.log(`Sistema Operativo: ${os}`);
 } else if (line.includes('open')) {
 const port = line.split(' ')[0].trim();
 openPorts.push(`${port}/tcp`);
-console.log(`Puerto abierto: ${port}/tcp`);
 } else if (line.includes('closed')) {
 const port = line.split(' ')[0].trim();
 closedPorts.push(`${port}/tcp`);
-console.log(`Puerto cerrado: ${port}/tcp`);
 } else if (line.includes('filtered')) {
 const port = line.split(' ')[0].trim();
 filteredPorts.push(`${port}/tcp`);
-console.log(`Puerto filtrado: ${port}/tcp`);
 } else if (line.includes('unfiltered')) {
 const port = line.split(' ')[0].trim();
 unfilteredPorts.push(`${port}/tcp`);
-console.log(`Puerto no filtrado: ${port}/tcp`);
+}
 } else if (line.includes('Service:')) {
 const service = line.split(':')[1].trim();
 const port = line.split(' ')[0].trim();
 services[port] = service;
-console.log(`Servicio: ${service} en puerto ${port}/tcp`);
 } else if (line.includes('Version:')) {
 const version = line.split(':')[1].trim();
 const port = line.split(' ')[0].trim();
 versions[port] = version;
-console.log(`Versión: ${version} en puerto ${port}/tcp`);
 } else if (line.includes('Script:')) {
 const script = line.split(':')[1].trim();
 const port = line.split(' ')[0].trim();
 scripts[port] = script;
-console.log(`Script: ${script} en puerto ${port}/tcp`);
 } else if (line.includes('MAC Address:')) {
 macAddress = line.split(':')[1].trim();
-console.log(`Dirección MAC: ${macAddress}`);
 } else if (line.includes('Device type:')) {
 deviceType = line.split(':')[1].trim();
-console.log(`Tipo de dispositivo: ${deviceType}`);
 } else if (line.includes('Uptime:')) {
 uptime = line.split(':')[1].trim();
-console.log(`Tiempo de actividad: ${uptime}`);
 } else if (line.includes('TCP Sequence Prediction:')) {
 tcpSequence = line.split(':')[1].trim();
-console.log(`Predicción de secuencia TCP: ${tcpSequence}`);
 } else if (line.includes('IP ID Sequence Generation:')) {
 ipIdSequence = line.split(':')[1].trim();
-console.log(`Generación de secuencia de ID de IP: ${ipIdSequence}`);
 } else if (line.includes('OS CPE:')) {
 osCPE = line.split(':')[1].trim();
-console.log(`CPE del Sistema Operativo: ${osCPE}`);
 } else if (line.includes('OS Generation:')) {
 osGeneration = line.split(':')[1].trim();
-console.log(`Generación del Sistema Operativo: ${osGeneration}`);
-}
 }
 
-console.log(`PUERTOS ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
-console.log(`PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
-console.log(`PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
-console.log(`PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
+spinner.stop();
+console.log(`PUERTOS: ${openPorts.join(', ') || 'Sin resultados'} (Abiertos), ${closedPorts.join(', ') || 'Sin resultados'} (Cerrados), ${filteredPorts.join(', ') || 'Sin resultados'} (Filtrados), ${unfilteredPorts.join(', ') || 'Sin resultados'} (No Filtrados)`);
+
 console.log(`SERVICIOS:`);
 for (const port in services) {
 console.log(`  Puerto ${port}: ${services[port] || 'Sin resultados'}`);
@@ -279,10 +272,12 @@ console.log(`VERSIONES:`);
 for (const port in versions) {
 console.log(`  Puerto ${port}: ${versions[port] || 'Sin resultados'}`);
 }
+
 console.log(`SCRIPTS:`);
 for (const port in scripts) {
 console.log(`  Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
 }
+
 console.log(`INFORMACIÓN ADICIONAL:`);
 console.log(`  Dirección MAC: ${macAddress || 'Sin resultados'}`);
 console.log(`  Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
@@ -291,14 +286,12 @@ console.log(`  Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`
 console.log(`  Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
 console.log(`  CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
 console.log(`  Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
-console.log(``);
+}
 });
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
-
-
 
 
 
