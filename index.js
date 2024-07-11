@@ -233,6 +233,7 @@ filteredPorts.push(`${port}/tcp`);
 const port = line.split(' ')[0].trim();
 unfilteredPorts.push(`${port}/tcp`);
 }
+
 } else if (line.includes('Service:')) {
 const service = line.split(':')[1].trim();
 const port = line.split(' ')[0].trim();
