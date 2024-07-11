@@ -284,7 +284,6 @@ console.log(`  Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`
 console.log(`  Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
 console.log(`  CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
 console.log(`  Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
-});
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
