@@ -173,6 +173,7 @@ console.error(`Error: ${error.message}`);
 
 
 const Spinner = require('cli-spinner').Spinner;
+async function main() {
 const chalk = await import('chalk');
 
 let os = '';
