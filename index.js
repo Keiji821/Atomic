@@ -52,7 +52,7 @@ const showMenu = () => {
   console.log('                ');
   console.log('[32m【1[32m】 [37m[1m Iniciar ataque DDoS');
   console.log('[32m【2[32m】 [37m[1m Actualizar código');
-  console.log('[32m【3[32m】 [37m[1m Configurar conexiones simultanea');
+  console.log('[32m【3[32m】 [37m[1m Configurar conexiones simultáneas');
   console.log('[32m【4[32m】 [37m[1m Aumentar potencia del ataque');
   console.log('[32m【5[32m】 [37m[1m Información de DNS para una dirección IP');
   console.log('[32m【6[32m】 [37m[1m Análisis de IP');
