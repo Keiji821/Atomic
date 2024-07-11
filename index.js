@@ -173,7 +173,7 @@ console.error(`Error: ${error.message}`);
 
 
 const Spinner = require('cli-spinner').Spinner;
-const chalk = require('chalk');
+const chalk = await import('chalk');
 
 let os = '';
 let hostname = '';
