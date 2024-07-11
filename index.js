@@ -172,7 +172,6 @@ console.error(`Error: ${error.message}`);
 
 
 
-
 const Spinner = require('cli-spinner').Spinner;
 const chalk = require('chalk');
 
@@ -227,13 +226,11 @@ openPorts.push(`${port}/tcp`);
 const port = line.split(' ')[0].trim();
 closedPorts.push(`${port}/tcp`);
 } else if (line.includes('filtered')) {
-const port = line.split(' ')[0].trim();
+const port = line(split(' ')[0].trim();
 filteredPorts.push(`${port}/tcp`);
 } else if (line.includes('unfiltered')) {
 const port = line.split(' ')[0].trim();
 unfilteredPorts.push(`${port}/tcp`);
-}
-
 } else if (line.includes('Service:')) {
 const service = line.split(':')[1].trim();
 const port = line.split(' ')[0].trim();
@@ -287,7 +284,6 @@ console.log(`  Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`
 console.log(`  Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
 console.log(`  CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
 console.log(`  Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
-}
 });
 } catch (error) {
 console.error(`Error: ${error.message}`);
