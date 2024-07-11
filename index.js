@@ -169,9 +169,13 @@ console.error(`Error: ${error.message}`);
 };
 
 
+
+
+
+
 const analyzeIP = async (ip) => {
 try {
-const command = `nslookup ${ip}`;
+const command = `nmap -A -T4 ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
 console.error(`Error: ${error.message}`);
@@ -179,20 +183,106 @@ return;
 }
 const lines = stdout.trim().split(String.raw`
 `);
+
+let os = '';
+let hostname = '';
+let address = '';
+let ports = [];
+let services = {};
+let versions = {};
+let scripts = {};
+let macAddress = '';
+let deviceType = '';
+let uptime = '';
+let tcpSequence = '';
+let ipIdSequence = '';
+let osCPE = '';
+let osGeneration = '';
+
 for (const line of lines) {
-if (line.includes('address')) {
-const address = line.split(':')[1].trim();
+if (line.includes('Nmap scan report for')) {
+hostname = line.split('for ')[1].trim();
+console.log(`Hostname: ${hostname}`);
+} else if (line.includes('Address:')) {
+address = line.split(':')[1].trim();
 console.log(` Dirección IP: ${address}`);
-} else if (line.includes('servername')) {
-const servername = line.split(':')[1].trim();
-console.log(` Servidor: ${servername}`);
+} else if (line.includes('OS:')) {
+os = line.split(':')[1].trim();
+console.log(`Sistema Operativo: ${os}`);
+} else if (line.includes('open')) {
+const port = line.split(' ')[0].trim();
+ports.push(port);
+console.log(`Puerto abierto: ${port}`);
+} else if (line.includes('Service:')) {
+const service = line.split(':')[1].trim();
+const port = line.split(' ')[0].trim();
+services[port] = service;
+console.log(`Servicio: ${service} en puerto ${port}`);
+} else if (line.includes('Version:')) {
+const version = line.split(':')[1].trim();
+const port = line.split(' ')[0].trim();
+versions[port] = version;
+console.log(`Versión: ${version} en puerto ${port}`);
+} else if (line.includes('MAC Address:')) {
+macAddress = line.split(':')[1].trim();
+console.log(`Dirección MAC: ${macAddress}`);
+} else if (line.includes('Device type:')) {
+deviceType = line.split(':')[1].trim();
+console.log(`Tipo de dispositivo: ${deviceType}`);
+} else if (line.includes('Uptime:')) {
+uptime = line.split(':')[1].trim();
+console.log(`Tiempo de actividad: ${uptime}`);
+} else if (line.includes('Script:')) {
+const script = line.split(':')[1].trim();
+const port = line.split(' ')[0].trim();
+scripts[port] = script;
+console.log(`Script: ${script} en puerto ${port}`);
+} else if (line.includes('TCP Sequence Prediction:')) {
+tcpSequence = line.split(':')[1].trim();
+console.log(`Predicción de secuencia TCP: ${tcpSequence}`);
+} else if (line.includes('IP ID Sequence Generation:')) {
+ipIdSequence = line.split(':')[1].trim();
+console.log(`Generación de secuencia de ID de IP: ${ipIdSequence}`);
+} else if (line.includes('OS CPE:')) {
+osCPE = line.split(':')[1].trim();
+console.log(`CPE del Sistema Operativo: ${osCPE}`);
+} else if (line.includes('OS Generation:')) {
+osGeneration = line.split(':')[1].trim();
+console.log(`Generación del Sistema Operativo: ${osGeneration}`);
 }
 }
+
+console.log(`PUERTOS ABIERTOS: ${ports.join(', ')}`);
+console.log(`SERVICIOS:`);
+for (const port in services) {
+console.log(`  Puerto ${port}: ${services[port]}`);
+}
+console.log(`VERSIONES:`);
+for (const port in versions) {
+console.log(`  Puerto ${port}: ${versions[port]}`);
+}
+console.log(`SCRIPTS:`);
+for (const port in scripts) {
+console.log(`  Puerto ${port}: ${scripts[port]}`);
+}
+console.log(`INFORMACIÓN ADICIONAL:`);
+console.log(`  Dirección MAC: ${macAddress}`);
+console.log(`  Tipo de dispositivo: ${deviceType}`);
+console.log(`  Tiempo de actividad: ${uptime}`);
+console.log(`  Predicción de secuencia TCP: ${tcpSequence}`);
+console.log(`  Generación de secuencia de ID de IP: ${ipIdSequence}`);
+console.log(`  CPE del Sistema Operativo: ${osCPE}`);
+console.log(`  Generación del Sistema Operativo: ${osGeneration}`);
+console.log(``);
 });
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
+
+
+
+
 
 
 
