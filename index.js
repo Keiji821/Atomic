@@ -203,7 +203,7 @@ const data = response.data;
 console.log(` `);
 console.log(`[32m[1m 
  ╭─────────────────────────╮
- │ 🌕 Informacion de la IP │
+ │ 🌕 Información de la IP │
  ╰─────────────────────────╯`);
 console.log(`[32m[1m       〔[36m01[32m〕  [31m[1m IP: [36m ${data.query}`);
 console.log(`[32m[1m       〔[36m02[32m〕  [31m[1m Estatus: [36m ${data.status}`);
