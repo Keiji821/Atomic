@@ -64,7 +64,6 @@ const showMenu = () => {
   rl.prompt();
 };
 
-showMenu();
 
 let numConnections = 100; // Número de conexiones simultaneas por defecto
 let attackDuration = 60; // Duración del ataque por defecto
