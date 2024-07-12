@@ -173,9 +173,7 @@ console.error(`Error: ${error.message}`);
 
 
 
-const Spinner = require('cli-spinner').Spinner;
 async function main() {
-const chalk = require('chalk');
 
 let os = '';
 let hostname = '';
@@ -198,10 +196,6 @@ let banner = '';
 
 const analyzeIP = async (ip) => {
 try {
-const spinner = new Spinner('Iniciando análisis de %s...'.green);
-spinner.setSpinnerString(18);
-spinner.start();
-
 const command = `nmap -A -T4 ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
@@ -261,7 +255,6 @@ osGeneration = line.split(':')[1].trim();
 }
 }
 
-spinner.stop();
 console.log(`PUERTOS: ${openPorts.join(', ') || 'Sin resultados'} (Abiertos), ${closedPorts.join(', ') || 'Sin resultados'} (Cerrados), ${filteredPorts.join(', ') || 'Sin resultados'} (Filtrados), ${unfilteredPorts.join(', ') || 'Sin resultados'} (No Filtrados)`);
 
 console.log(`SERVICIOS:`);
@@ -287,10 +280,12 @@ console.log(`  Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resu
 console.log(`  CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
 console.log(`  Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
 });
+});
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
+
 
 
 
