@@ -335,28 +335,26 @@ rl.on('line', (option) => {
       rl.question('[32m[1m IP/Dominio: ', (url) => {
         if (url === '') {
           console.log('[33m[1m URL invalida');
-          showMenu();
         } else {
           ddosAttack(url, numConnections, attackDuration);
-          showMenu(); // Volver a mostrar el menú principal
         }
+        showMenu();
       });
       break;
     case '2':
       updateCode();
-      showMenu(); // Volver a mostrar el menú principal
+      showMenu();
       break;
     case '3':
       console.log('[36m[1m Ingrese el número de conexiones simultaneas');
       rl.question('[32m[1m Conexiones: ', (conexiones) => {
         if (conexiones === '') {
           console.log('[31m[1m Valor invalido');
-          showMenu();
         } else {
           numConnections = parseInt(conexiones);
           console.log(`[36m[1m Conexiones simultaneas establecidas en ${numConnections}`);
-          showMenu(); // Volver a mostrar el menú principal
         }
+        showMenu();
       });
       break;
     case '4':
@@ -364,12 +362,11 @@ rl.on('line', (option) => {
       rl.question('Duración: ', (duration) => {
         if (duration === '') {
           console.log('[31m[1m Valor invalido');
-          showMenu();
         } else {
           attackDuration = parseInt(duration);
           console.log(`[36m[1m Duración del ataque establecida en ${attackDuration} segundos`);
-          showMenu(); // Volver a mostrar el menú principal
         }
+        showMenu();
       });
       break;
     case '5':
@@ -377,11 +374,10 @@ rl.on('line', (option) => {
       rl.question('[32m[1m IP: ', (ip) => {
         if (ip === '') {
           console.log('[36m[1m IP invalida');
-          showMenu();
         } else {
           getInfo(ip);
-          showMenu();
         }
+        showMenu();
       });
       break;
     case '6':
@@ -389,11 +385,10 @@ rl.on('line', (option) => {
       rl.question('[32m[1m IP: ', (ip) => {
         if (ip === '') {
           console.log('[31m[1m IP invalida');
-          showMenu();
         } else {
           analyzeIP(ip);
-          showMenu();
         }
+        showMenu();
       });
       break;
     case '7':
@@ -401,11 +396,10 @@ rl.on('line', (option) => {
       rl.question('[32m[1m IP: ', (ip) => {
         if (ip === '') {
           console.log('[31m[1m IP invalida');
-          showMenu();
         } else {
           getGeoIP(ip);
-          showMenu();
         }
+        showMenu();
       });
       break;
     case '0':
