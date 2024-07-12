@@ -280,7 +280,6 @@ console.log(`  Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resu
 console.log(`  CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
 console.log(`  Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
 });
-});
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
