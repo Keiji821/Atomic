@@ -403,7 +403,7 @@ getGeoIP(ip);
 
 showMenu(); // Volver a mostrar el menú principal
 }
-});
+})); 
 break;
 case '0':
 console.log('Saliendo...');
