@@ -417,6 +417,8 @@ default:
 console.log('[31m[1m Opción invalida');
 showMenu();
 }
-}).on('close', () => {
+})(); // Agregar este paréntesis de cierre
+
+rl.on('close', () => {
 process.exit();
 });
