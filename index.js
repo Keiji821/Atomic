@@ -175,7 +175,7 @@ console.error(`Error: ${error.message}`);
 
 const Spinner = require('cli-spinner').Spinner;
 async function main() {
-const chalk = await import('chalk');
+const chalk = require('chalk');
 
 let os = '';
 let hostname = '';
