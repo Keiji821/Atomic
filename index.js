@@ -399,16 +399,16 @@ rl.on('line', (option) => {
         } else {
           getGeoIP(ip);
         }
-        showMenu();
-      });
-      break;
-    case '0':
-      console.log('[32m[1m Saliendo...');
-      process.exit();
-      break;
-    default:
-      console.log('[31m[1m Opción invalida');
-      showMenu();
-  }
+        
+showMenu(); // Volver a mostrar el menú principal
+}
+});
+break;
+case '0':
+console.log('Saliendo...');
+process.exit();
+break;
+}
 }).on('close', () => {
 process.exit();
+});
