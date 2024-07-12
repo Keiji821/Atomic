@@ -327,7 +327,7 @@ rl.on('line', (option) => {
       console.log('[36m[1m Ingrese la URL o IP del objetivo');
       rl.question('[32m[1m IP/Dominio: ', (url) => {
         if (url === '') {
-          console.log('[33m[1m URL invalida');
+          showError('URL invalida');
           showMenu();
         } else {
           ddosAttack(url, numConnections, attackDuration);
@@ -343,10 +343,10 @@ rl.on('line', (option) => {
       console.log('[36m[1m Ingrese el número de conexiones simultaneas');
       rl.question('[32m[1m Conexiones: ', (conexiones) => {
         if (conexiones === '') {
-          console.log('[31m[1m Valor invalido');
+          showError('Valor invalido');
           showMenu();
         } else {
-          numConnections = parseInt(conexiones);
+          numConnections = Number.parseInt(conexiones, 10);
           console.log(`[36m[1m Conexiones simultaneas establecidas en ${numConnections}`);
           showMenu(); // Volver a mostrar el menú principal
         }
@@ -356,10 +356,10 @@ rl.on('line', (option) => {
       console.log('[36m[1m Ingrese la duración del ataque (en segundos):>');
       rl.question('Duración: ', (duration) => {
         if (duration === '') {
-          console.log('[31m[1m Valor invalido');
+          showError('Valor invalido');
           showMenu();
         } else {
-          attackDuration = parseInt(duration);
+          attackDuration = Number.parseInt(duration, 10);
           console.log(`[36m[1m Duración del ataque establecida en ${attackDuration} segundos`);
           showMenu(); // Volver a mostrar el menú principal
         }
@@ -369,7 +369,7 @@ rl.on('line', (option) => {
       console.log('[36m[1m Ingrese la IP para obtener información');
       rl.question('[32m[1m IP: ', (ip) => {
         if (ip === '') {
-          console.log('[36m[1m IP invalida');
+          showError('IP invalida');
           showMenu();
         } else {
           getInfo(ip);
@@ -381,10 +381,14 @@ rl.on('line', (option) => {
       console.log('[36m[1m Ingrese la IP para análisis ');
       rl.question('[32m[1m IP: ', (ip) => {
         if (ip === '') {
-          console.log('[31m[1m IP invalida');
+          showError('IP invalida');
           showMenu();
         } else {
-          analyzeIP(ip);
+          try {
+            analyzeIP(ip);
+          } catch (error) {
+            console.error(`Error al analizar IP: ${error.message}`);
+          }
           showMenu();
         }
       });
@@ -393,7 +397,7 @@ rl.on('line', (option) => {
       console.log('[36m[1m Ingrese la IP para obtener información geográfica');
       rl.question('[32m[1m IP: ', (ip) => {
         if (ip === '') {
-          console.log('[31m[1m IP invalida');
+          showError('IP invalida');
           showMenu();
         } else {
           getGeoIP(ip);
@@ -403,10 +407,13 @@ rl.on('line', (option) => {
       break;
     case '0':
       console.log('[32m[1m Saliendo...');
-      // Eliminé la línea process.exit();
       break;
     default:
       console.log('[31m[1m Opción invalida');
       showMenu();
   }
 });
+
+function showError(message) {
+  console.log(`[31m[1m ${message}`);
+}
