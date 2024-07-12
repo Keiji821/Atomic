@@ -417,8 +417,6 @@ default:
 console.log('[31m[1m Opción invalida');
 showMenu();
 }
-    }
 }).on('close', () => {
-    process.exit();
-}); 
-}
+process.exit();
+});
