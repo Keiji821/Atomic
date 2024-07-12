@@ -411,5 +411,4 @@ rl.on('line', (option) => {
       showMenu();
   }
 }).on('close', () => {
-  process.exit();
-})();
+process.exit();
