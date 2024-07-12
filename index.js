@@ -64,7 +64,6 @@ const showMenu = () => {
   rl.prompt();
 };
 
-showMenu();
 
 let numConnections = 100; // Número de conexiones simultaneas por defecto
 let attackDuration = 60; // Duración del ataque por defecto
@@ -169,9 +168,6 @@ console.log(`---------------------------`);
 console.error(`Error: ${error.message}`);
 }
 };
-
-
-
 
 
 async function main() {
@@ -285,10 +281,6 @@ console.log(`  Generación del Sistema Operativo: ${osGeneration || 'Sin resulta
 console.error(`Error: ${error.message}`);
 }
 };
-
-
-
-
 
 
 const getGeoIP = async (ip) => {
