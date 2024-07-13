@@ -184,7 +184,6 @@ for (const line of lines) {
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
-}();
 
 
 for (const line of lines) {
