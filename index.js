@@ -180,8 +180,9 @@ const lines = stdout.trim().split(String.raw`
 for (const line of lines) {
 //...
 }
-})(); // ¡Aquí estaba el problema!
-} catch (error) {
+}
+}
+catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
