@@ -411,7 +411,7 @@ showMenu();
 break;
 case '7':
 console.log('Ingrese la IP para obtener información geográfica');
-rl(question, 'IP: ', (ip) => {
+rl.question('IP: ', (ip) => {
 if (ip === '') {
 console.log('IP invalida');
 showMenu();
