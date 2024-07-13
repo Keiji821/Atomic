@@ -180,7 +180,7 @@ const lines = stdout.trim().split(String.raw`
 for (const line of lines) {
 // Procesar la salida de la función exec aquí
 }
-})();
+}
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
