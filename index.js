@@ -276,29 +276,25 @@ if (openPorts.length === 0) {
 console.log(`  Sin resultados`);
 } else {
 console.log(`  Abiertos: ${openPorts.join(', ')}`);
-console.log(`  ${openPorts.map(port => `  Puerto ${port}: abierto`).join('
-')}`);
+console.log(`  ${openPorts.map(port => `  Puerto ${port}: abierto`).join('\n')}`);
 }
 if (closedPorts.length === 0) {
 console.log(`  Sin resultados`);
 } else {
 console.log(`  Cerrados: ${closedPorts.join(', ')}`);
-console.log(`  ${closedPorts.map(port => `  Puerto ${port}: cerrado`).join('
-')}`);
+console.log(`  ${closedPorts.map(port => `  Puerto ${port}: cerrado`).join('\n')}`);
 }
 if (filteredPorts.length === 0) {
 console.log(`  Sin resultados`);
 } else {
 console.log(`  Filtrados: ${filteredPorts.join(', ')}`);
-console.log(`  ${filteredPorts.map(port => `  Puerto ${port}: filtrado`).join('
-')}`);
+console.log(`  ${filteredPorts.map(port => `  Puerto ${port}: filtrado`).join('\n')}`);
 }
 if (unfilteredPorts.length === 0) {
 console.log(`  Sin resultados`);
 } else {
 console.log(`  No Filtrados: ${unfilteredPorts.join(', ')}`);
-console.log(`  ${unfilteredPorts.map(port => `  Puerto ${port}: no filtrado`).join('
-')}`);
+console.log(`  ${unfilteredPorts.map(port => `  Puerto ${port}: no filtrado`).join('\n')}`);
 }
 
 console.log(`SERVICIOS:`);
