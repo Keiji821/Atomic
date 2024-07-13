@@ -418,5 +418,3 @@ showMenu();
 }).on('close', () => {
 process.exit();
 });
-
-
