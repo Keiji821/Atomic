@@ -149,13 +149,23 @@ console.error(`Error: ${error.message}`);
 
 
 const analyzeIP = async (ip) => {
+try {
+const command = `nmap -A -T4 ${ip}`;
+exec(command, (error, stdout, stderr) => {
+if (error) {
+console.error(`Error: ${error.message}`);
+return;
+}
+const lines = stdout.trim().split(String.raw`
+`);
+
+let os = '';
+let hostname = '';
+let address = '';
 let openPorts = [];
 let closedPorts = [];
 let filteredPorts = [];
 let unfilteredPorts = [];
-let os = '';
-let hostname = '';
-let address = '';
 let services = {};
 let versions = {};
 let scripts = {};
@@ -166,25 +176,6 @@ let tcpSequence = '';
 let ipIdSequence = '';
 let osCPE = '';
 let osGeneration = '';
-
-try {
-const command = `nmap -A -T4 ${ip}`;
-exec(command, (error, stdout, stderr) => {
-if (error) {
-console.error(`Error: ${error.message}`);
-return;
-}
-const lines = stdout.trim().split(String.raw`
-
-`);
-for (const line of lines) {
-// Procesar la salida de la función exec aquí
-}
-});
-} catch (error) {
-console.error(`Error: ${error.message}`);
-}
-})();
 
 
 for (const line of lines) {
