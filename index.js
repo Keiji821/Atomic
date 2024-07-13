@@ -212,6 +212,7 @@ const script = line.split(':')[1].trim();
 const port = line.split(' ')[0].trim();
 scripts[port] = script;
 }
+
 } else if (line.includes('MAC Address:')) {
 macAddress = line.split(':')[1].trim();
 } else if (line.includes('Device type:')) {
