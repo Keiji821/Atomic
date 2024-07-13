@@ -322,98 +322,97 @@ console.error(`Error: ${error.message}`);
 
 
 rl.on('line', (option) => {
-  switch (option.trim()) {
-    case '1':
-      console.log('[36m[1m Ingrese la URL o IP del objetivo');
-      rl.question('[32m[1m IP/Dominio: ', (url) => {
-        if (url === '') {
-          showError('URL invalida');
-          showMenu();
-        } else {
-          ddosAttack(url, numConnections, attackDuration);
-          showMenu(); // Volver a mostrar el menú principal
-        }
-      });
-      break;
-    case '2':
-      updateCode();
-      showMenu(); // Volver a mostrar el menú principal
-      break;
-    case '3':
-      console.log('[36m[1m Ingrese el número de conexiones simultaneas');
-      rl.question('[32m[1m Conexiones: ', (conexiones) => {
-        if (conexiones === '') {
-          showError('Valor invalido');
-          showMenu();
-        } else {
-          numConnections = Number.parseInt(conexiones, 10);
-          console.log(`[36m[1m Conexiones simultaneas establecidas en ${numConnections}`);
-          showMenu(); // Volver a mostrar el menú principal
-        }
-      });
-      break;
-    case '4':
-      console.log('[36m[1m Ingrese la duración del ataque (en segundos):>');
-      rl.question('Duración: ', (duration) => {
-        if (duration === '') {
-          showError('Valor invalido');
-          showMenu();
-        } else {
-          attackDuration = Number.parseInt(duration, 10);
-          console.log(`[36m[1m Duración del ataque establecida en ${attackDuration} segundos`);
-          showMenu(); // Volver a mostrar el menú principal
-        }
-      });
-      break;
-    case '5':
-      console.log('[36m[1m Ingrese la IP para obtener información');
-      rl.question('[32m[1m IP: ', (ip) => {
-        if (ip === '') {
-          showError('IP invalida');
-          showMenu();
-        } else {
-          getInfo(ip);
-          showMenu();
-        }
-      });
-      break;
-    case '6':
-      console.log('[36m[1m Ingrese la IP para análisis ');
-      rl.question('[32m[1m IP: ', (ip) => {
-        if (ip === '') {
-          showError('IP invalida');
-          showMenu();
-        } else {
-          try {
-            analyzeIP(ip);
-          } catch (error) {
-            console.error(`Error al analizar IP: ${error.message}`);
-          }
-          showMenu();
-        }
-      });
-      break;
-    case '7':
-      console.log('[36m[1m Ingrese la IP para obtener información geográfica');
-      rl.question('[32m[1m IP: ', (ip) => {
-        if (ip === '') {
-          showError('IP invalida');
-          showMenu();
-        } else {
-          getGeoIP(ip);
-          showMenu();
-        }
-      });
-      break;
-    case '0':
-      console.log('[32m[1m Saliendo...');
-      break;
-    default:
-      console.log('[31m[1m Opción invalida');
-      showMenu();
-  }
-});
-
-function showError(message) {
-  console.log(`[31m[1m ${message}`);
+switch (option.trim()) {
+case '1':
+console.log('Ingrese la URL del objetivo: ');
+rl.question('URL: ', (url) => {
+if (url === '') {
+console.log('URL invalida');
+showMenu();
+} else {
+ddosAttack(url, numConnections, attackDuration);
+showMenu(); // Volver a mostrar el menú principal
 }
+});
+break;
+case '2':
+updateCode();
+showMenu(); // Volver a mostrar el menú principal
+break;
+case '3':
+console.log('Ingrese el número de conexiones simultaneas: ');
+rl.question('Conexiones: ', (conexiones) => {
+if (conexiones === '') {
+console.log('Valor invalido');
+showMenu();
+} else {
+numConnections = parseInt(conexiones);
+console.log(`Conexiones simultaneas establecidas en ${numConnections}`);
+showMenu(); // Volver a mostrar el menú principal
+}
+});
+break;
+case '4':
+console.log('Ingrese la duración del ataque (en segundos): ');
+rl.question('Duración: ', (duration) => {
+if (duration === '') {
+console.log('Valor invalido');
+showMenu();
+} else {
+attackDuration = parseInt(duration);
+console.log(`Duración del ataque establecida en ${attackDuration} segundos`);
+showMenu(); // Volver a mostrar el menú principal
+}
+});
+break;
+case '5':
+console.log('Ingrese la IP para obtener información');
+rl.question('IP: ', (ip) => {
+if (ip === '') {
+console.log('IP invalida');
+showMenu();
+} else {
+getInfo(ip);
+showMenu();
+}
+});
+break;
+case '6':
+console.log('Ingrese la IP para análisis ');
+rl.question('IP: ', (ip) => {
+if (ip === '') {
+console.log('IP invalida');
+showMenu();
+} else {
+try {
+analyzeIP(ip);
+} catch (error) {
+console.error(`Error al analizar IP: ${error.message}`);
+}
+showMenu();
+}
+});
+break;
+case '7':
+console.log('Ingrese la IP para obtener información geográfica');
+rl(question, 'IP: ', (ip) => {
+if (ip === '') {
+console.log('IP invalida');
+showMenu();
+} else {
+getGeoIP(ip);
+showMenu();
+}
+});
+break;
+case '0':
+console.log('Saliendo...');
+process.exit();
+break;
+default:
+console.log('Opción invalida');
+showMenu();
+}
+}).on('close', () => {
+process.exit();
+});
