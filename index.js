@@ -180,13 +180,11 @@ const lines = stdout.trim().split(String.raw`
 for (const line of lines) {
 //...
 }
-});
-return; // ¡Aquí es donde falta la instrucción `return`!
+})(); // ¡Aquí estaba el problema!
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
-
 
 
 for (const line of lines) {
