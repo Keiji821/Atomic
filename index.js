@@ -150,6 +150,11 @@ console.error(`Error: ${error.message}`);
 
 const analyzeIP = async (ip) => {
 try {
+let openPorts = [];
+let closedPorts = [];
+let filteredPorts = [];
+let unfilteredPorts = [];
+
 const command = `nmap -A -T4 ${ip}`;
 exec(command, (error, stdout, stderr) => {
 if (error) {
@@ -163,10 +168,6 @@ const lines = stdout.trim().split(String.raw`
 let os = '';
 let hostname = '';
 let address = '';
-let openPorts = [];
-let closedPorts = [];
-let filteredPorts = [];
-let unfilteredPorts = [];
 let services = {};
 let versions = {};
 let scripts = {};
@@ -177,6 +178,7 @@ let tcpSequence = '';
 let ipIdSequence = '';
 let osCPE = '';
 let osGeneration = '';
+
 
 for (const line of lines) {
 if (line.includes('Nmap scan report for')) {
