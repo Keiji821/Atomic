@@ -149,42 +149,42 @@ console.error(`Error: ${error.message}`);
 
 
 const analyzeIP = async (ip) => {
-  let openPorts = [];
-  let closedPorts = [];
-  let filteredPorts = [];
-  let unfilteredPorts = [];
-  let os = '';
-  let hostname = '';
-  let address = '';
-  let services = {};
-  let versions = {};
-  let scripts = {};
-  let macAddress = '';
-  let deviceType = '';
-  let uptime = '';
-  let tcpSequence = '';
-  let ipIdSequence = '';
-  let osCPE = '';
-  let osGeneration = '';
+let openPorts = [];
+let closedPorts = [];
+let filteredPorts = [];
+let unfilteredPorts = [];
+let os = '';
+let hostname = '';
+let address = '';
+let services = {};
+let versions = {};
+let scripts = {};
+let macAddress = '';
+let deviceType = '';
+let uptime = '';
+let tcpSequence = '';
+let ipIdSequence = '';
+let osCPE = '';
+let osGeneration = '';
 
-  try {
-    const command = `nmap -A -T4 ${ip}`;
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error: ${error.message}`);
-        return;
-      }
-      const lines = stdout.trim().split(String.raw`
+try {
+const command = `nmap -A -T4 ${ip}`;
+exec(command, (error, stdout, stderr) => {
+if (error) {
+console.error(`Error: ${error.message}`);
+return;
+}
+const lines = stdout.trim().split(String.raw`
 
 `);
 
-      for (const line of lines) {
-        
-      }
-    });
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
-  }
+for (const line of lines) {
+
+}
+})
+} catch (error) {
+console.error(`Error: ${error.message}`);
+}
 };
 
 
