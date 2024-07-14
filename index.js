@@ -237,30 +237,30 @@ osGeneration = line.split(':')[1].trim();
 console.log(`Generación del Sistema Operativo: ${osGeneration}`);
 }
 }
-console.log(`PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
-console.log(`PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
-console.log(`PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
-console.log(`PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
-console.log(`SERVICIOS:`);
+console.log(`     PUERTOS ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
+console.log(`     PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
+console.log(`     PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
+console.log(`     PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
+console.log(`     SERVICIOS:`);
 for (const port in services) {
 console.log(`  Puerto ${port}: ${services[port] || 'Sin resultados'}`);
 }
-console.log(`VERSIONES:`);
+console.log(`     VERSIONES:`);
 for (const port in versions) {
 console.log(`  Puerto ${port}: ${versions[port] || 'Sin resultados'}`);
 }
-console.log(`SCRIPTS:`);
+console.log(`     SCRIPTS:`);
 for (const port in scripts) {
-console.log(`  Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
+console.log(`     Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
 }
 console.log(`INFORMACIÓN ADICIONAL:`);
-console.log(`  Dirección MAC: ${macAddress || 'Sin resultados'}`);
-console.log(`  Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
-console.log(`  Tiempo de actividad: ${uptime || 'Sin resultados'}`);
-console.log(`  Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`);
-console.log(`  Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
-console.log(`  CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
-console.log(`  Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
+console.log(`      Dirección MAC: ${macAddress || 'Sin resultados'}`);
+console.log(`      Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
+console.log(`      Tiempo de actividad: ${uptime || 'Sin resultados'}`);
+console.log(`      Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`);
+console.log(`      Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
+console.log(`      CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
+console.log(`      Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
 console.log(``);
 });
 } catch (error) {
