@@ -239,7 +239,7 @@ console.log(`Generación del Sistema Operativo: ${osGeneration}`);
 }
 console.log(`[32m[1m 
         ╭───────────────────────────╮
-      │ 🌙 Resultados del análisis │
+      │ Resultados del análisis   │
         ╰───────────────────────────╯`);
 console.log('');
 console.log(`      PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
@@ -260,7 +260,7 @@ console.log(`     Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
 }
 console.log(`[32m[1m 
         ╭─────────────────────────╮
-        │ Informacion adicional │
+        │ Informacion adicional   │
         ╰─────────────────────────╯`);
 console.log(`      Dirección MAC: ${macAddress || 'Sin resultados'}`);
 console.log(`      Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
