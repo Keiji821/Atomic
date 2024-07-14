@@ -260,9 +260,9 @@ console.log(`     Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
 }
 console.log(`[32m[1m 
         ╭─────────────────────────╮
-        │ Informacion adicional   │
+        │ Información adicional   │
         ╰─────────────────────────╯`);
-console.log(`      Dirección MAC: ${macAddress || 'Sin resultados'}`);
+console.log(`[32m[1m       〔[36m01[32m〕  [31m[1m      Dirección MAC: ${macAddress || 'Sin resultados'}`);
 console.log(`      Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
 console.log(`      Tiempo de actividad: ${uptime || 'Sin resultados'}`);
 console.log(`      Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`);
