@@ -239,7 +239,7 @@ console.log(`Generación del Sistema Operativo: ${osGeneration}`);
 }
 console.log(`[32m[1m 
         ╭───────────────────────────╮
-      │ Resultados del análisis   │
+        │ Resultados del análisis   │
         ╰───────────────────────────╯`);
 console.log('');
 console.log(`      PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
