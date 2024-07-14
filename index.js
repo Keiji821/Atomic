@@ -158,17 +158,9 @@ return;
 const lines = stdout.trim().split(String.raw`
 `);
 
-let os = '';
-let hostname = '';
-let address = '';
 let openPorts = [];
-let closedPorts = [];
-let filteredPorts = [];
-let unfilteredPorts = [];
 let services = {};
-let versions = {};
-let scripts = {};
-let macAddress = '';
+let os = '';
 let deviceType = '';
 let uptime = '';
 let tcpSequence = '';
@@ -176,106 +168,59 @@ let ipIdSequence = '';
 let osCPE = '';
 let osGeneration = '';
 
-
-for (const line of lines) {
-if (line.includes('Nmap scan report for')) {
-hostname = line.split('for ')[1].trim();
-console.log(`Hostname: ${hostname}`);
-} else if (line.includes('Address:')) {
-address = line.split(':')[1].trim();
-console.log(` Dirección IP: ${address}`);
-} else if (line.includes('OS:')) {
-os = line.split(':')[1].trim();
-console.log(`Sistema Operativo: ${os}`);
-} else if (line.includes('open')) {
-const port = line.split(' ')[0].trim();
-openPorts.push(`${port}/tcp`);
-} else if (line.includes('closed')) {
-const port = line.split(' ')[0].trim();
-closedPorts.push(`${port}/tcp`);
-} else if (line.includes('filtered')) {
-const port = line.split(' ')[0].trim();
-filteredPorts.push(`${port}/tcp`);
-} else if (line.includes('unfiltered')) {
-const port = line.split(' ')[0].trim();
-unfilteredPorts.push(`${port}/tcp`);
-} else if (line.includes('Service:')) {
-const service = line.split(':')[1].trim();
-const port = line.split(' ')[0].trim();
+lines.forEach((line) => {
+const parts = line.trim().split(/ +/);
+if (parts.length > 3 && parts[1] === 'open') {
+const port = parts[0];
+const service = parts[2];
+const version = parts[3];
+openPorts.push({ port, service, version });
 services[port] = service;
-console.log(`Servicio: ${service} en puerto ${port}/tcp`);
-} else if (line.includes('Version:')) {
-const version = line.split(':')[1].trim();
-const port = line.split(' ')[0].trim();
-versions[port] = version;
-console.log(`Versión: ${version} en puerto ${port}/tcp`);
-} else if (line.includes('Script:')) {
-const script = line.split(':', 1)[1].trim();
-const port = line.split(' ')[0].trim();
-scripts[port] = script;
-console.log(`Script: ${script} en puerto ${port}/tcp`);
-} else if (line.includes('MAC Address:')) {
-macAddress = line.split(':')[1].trim();
-console.log(`Dirección MAC: ${macAddress}`);
-} else if (line.includes('Device type:')) {
-deviceType = line.split(':')[1].trim();
-console.log(`Tipo de dispositivo: ${deviceType}`);
-} else if (line.includes('Uptime:')) {
-uptime = line.split(':')[1].trim();
-console.log(`Tiempo de actividad: ${uptime}`);
-} else if (line.includes('TCP Sequence Prediction:')) {
-tcpSequence = line.split(':')[1].trim();
-console.log(`Predicción de secuencia TCP: ${tcpSequence}`);
-} else if (line.includes('IP ID Sequence Generation:')) {
-ipIdSequence = line.split(':')[1].trim();
-console.log(`Generación de secuencia de ID de IP: ${ipIdSequence}`);
-} else if (line.includes('OS CPE:')) {
-osCPE = line.split(':')[1].trim();
-console.log(`CPE del Sistema Operativo: ${osCPE}`);
-} else if (line.includes('OS Generation:')) {
-osGeneration = line.split(':')[1].trim();
-console.log(`Generación del Sistema Operativo: ${osGeneration}`);
+} else if (parts[0] === 'OS:') {
+os = parts[1];
+} else if (parts[0] === 'CPE:') {
+osCPE = parts[1];
+} else if (parts[0] === 'Device') {
+deviceType = parts[2];
+} else if (parts[0] === 'Uptime:') {
+uptime = parts[1];
+} else if (parts[0] === 'TCP') {
+tcpSequence = parts[3];
+} else if (parts[0] === 'IP') {
+ipIdSequence = parts[3];
+} else if (parts[0] === 'OS') {
+osGeneration = parts[2];
 }
-}
-console.log(`[32m[1m 
-        ╭───────────────────────────╮
-        │ Resultados del análisis   │
-        ╰───────────────────────────╯`);
-console.log('');
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Puertos abiertos: ${openPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Puertos cerrados: ${closedPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Puertos filtrados: ${filteredPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Puertos no filtrados: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Servicios:`);
-for (const port in services) {
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Puerto ${port}: ${services[port] || 'Sin resultados'}`);
-}
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Versiones:`);
-for (const port in versions) {
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Puerto ${port}: ${versions[port] || 'Sin resultados'}`);
-}
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Scripts:`);
-for (const port in scripts) {
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
-}
-console.log(`[32m[1m 
-        ╭─────────────────────────╮
-        │ Información adicional   │
-        ╰─────────────────────────╯`);
-console.log('');
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Dirección MAC: ${macAddress || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Tiempo de actividad: ${uptime || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
-console.log(``);
+});
+
+console.log(`Nmap scan report for ${ip}`);
+console.log(`Host is up.
+`);
+
+console.log(`PORT      STATE SERVICE    VERSION`);
+openPorts.forEach((port) => {
+console.log(`${port.port}      open ${port.service}    ${port.version}`);
+});
+
+console.log(`
+Service Info:`);
+console.log(`OS: ${os} (${osCPE})`);
+console.log(`Device type: ${deviceType}`);
+console.log(`Uptime: ${uptime}`);
+console.log(`TCP Sequence Prediction: ${tcpSequence}`);
+console.log(`IP ID Sequence Generation: ${ipIdSequence}`);
+console.log(`OS Generation: ${osGeneration}`);
+
+console.log(`
+`);
 });
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
 };
+
+
+
 
 
 const getGeoIP = async (ip) => {
