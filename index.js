@@ -172,24 +172,25 @@ lines.forEach((line) => {
 const parts = line.trim().split(/ +/);
 if (parts.length > 3 && parts[1] === 'open') {
 const port = parts[0];
+const state = parts[1];
 const service = parts[2];
-const version = parts[3];
-openPorts.push({ port, service, version });
+const version = parts.slice(3).join(' ');
+openPorts.push({ port, state, service, version });
 services[port] = service;
 } else if (parts[0] === 'OS:') {
-os = parts[1];
+os = parts.slice(1).join(' ');
 } else if (parts[0] === 'CPE:') {
-osCPE = parts[1];
+osCPE = parts.slice(1).join(' ');
 } else if (parts[0] === 'Device') {
-deviceType = parts[2];
+deviceType = parts.slice(2).join(' ');
 } else if (parts[0] === 'Uptime:') {
-uptime = parts[1];
+uptime = parts.slice(1).join(' ');
 } else if (parts[0] === 'TCP') {
-tcpSequence = parts[3];
+tcpSequence = parts.slice(3).join(' ');
 } else if (parts[0] === 'IP') {
-ipIdSequence = parts[3];
+ipIdSequence = parts.slice(3).join(' ');
 } else if (parts[0] === 'OS') {
-osGeneration = parts[2];
+osGeneration = parts.slice(2).join(' ');
 }
 });
 
@@ -199,7 +200,7 @@ console.log(`Host is up.
 
 console.log(`PORT      STATE SERVICE    VERSION`);
 openPorts.forEach((port) => {
-console.log(`${port.port}      open ${port.service}    ${port.version}`);
+console.log(`${port.port}      ${port.state} ${port.service}    ${port.version}`);
 });
 
 console.log(`
@@ -218,6 +219,7 @@ console.log(`
 console.error(`Error: ${error.message}`);
 }
 };
+
 
 
 
