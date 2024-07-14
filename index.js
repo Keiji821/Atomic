@@ -242,7 +242,7 @@ console.log(`[32m[1m
         │ Resultados del análisis   │
         ╰───────────────────────────╯`);
 console.log('');
-console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Puertos abiertos: ${openPorts.join(', ') || 'Sin resultados'}`);
 console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
 console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
 console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
