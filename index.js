@@ -244,7 +244,7 @@ console.log(`Generación del Sistema Operativo: ${osGeneration}`);
 
 console.log(`PUERTOS ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
 console.log(`PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
-console.log(`PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
+console.log(`PUERTOS FILTRADOS: ${ filteredPorts.join(', ') || 'Sin resultados'}`);
 console.log(`PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
 console.log(`SERVICIOS:`);
 for (const port in services) {
@@ -267,11 +267,6 @@ console.log(`  Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resu
 console.log(`  CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
 console.log(`  Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
 console.log(``);
-});
-} catch (error) {
-console.error(`Error: ${error.message}`);
-}
-};
 
 
 const getGeoIP = async (ip) => {
