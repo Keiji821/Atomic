@@ -242,34 +242,34 @@ console.log(`[32m[1m
         │ Resultados del análisis   │
         ╰───────────────────────────╯`);
 console.log('');
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m SERVICIOS:`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m SERVICIOS:`);
 for (const port in services) {
 console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Puerto ${port}: ${services[port] || 'Sin resultados'}`);
 }
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m VERSIONES:`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m VERSIONES:`);
 for (const port in versions) {
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Puerto ${port}: ${versions[port] || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Puerto ${port}: ${versions[port] || 'Sin resultados'}`);
 }
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m SCRIPTS:`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m SCRIPTS:`);
 for (const port in scripts) {
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
 }
 console.log(`[32m[1m 
         ╭─────────────────────────╮
         │ Información adicional   │
         ╰─────────────────────────╯`);
 console.log('');
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Dirección MAC: ${macAddress || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Tiempo de actividad: ${uptime || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Dirección MAC: ${macAddress || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Tiempo de actividad: ${uptime || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [36m[1m Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
 console.log(``);
 });
 } catch (error) {
@@ -343,52 +343,52 @@ let attackDuration = 60; // Duración del ataque por defecto
 rl.on('line', (option) => {
 switch (option.trim()) {
 case '1':
-console.log('Ingrese la URL del objetivo: ');
-rl.question('URL: ', (url) => {
+console.log('[36m[1m Ingrese la URL del objetivo');
+rl.question('[32m[1m URL/IP: ', (url) => {
 if (url === '') {
-console.log('URL invalida');
+console.log('[31m[1m Url o ip invalida');
 showMenu();
 } else {
 ddosAttack(url, numConnections, attackDuration);
-showMenu(); // Volver a mostrar el menú principal
+showMenu();
 }
 });
 break;
 case '2':
 updateCode();
-showMenu(); // Volver a mostrar el menú principal
+showMenu();
 break;
 case '3':
-console.log('Ingrese el número de conexiones simultaneas: ');
-rl.question('Conexiones: ', (conexiones) => {
+console.log('[36m[1m Ingrese el número de conexiones simultaneas');
+rl.question('[32m[1m Conexiones: ', (conexiones) => {
 if (conexiones === '') {
-console.log('Valor invalido');
+console.log('[31m[1m Valor invalido');
 showMenu();
 } else {
 numConnections = parseInt(conexiones);
-console.log(`Conexiones simultaneas establecidas en ${numConnections}`);
-showMenu(); // Volver a mostrar el menú principal
+console.log(`[36m[1m Conexiones simultaneas establecidas en ${numConnections}`);
+showMenu();
 }
 });
 break;
 case '4':
-console.log('Ingrese la duración del ataque (en segundos): ');
-rl.question('Duración: ', (duration) => {
+console.log('[36m[1m Ingrese la duración del ataque (en segundos)');
+rl.question('[32m[1m Duración: ', (duration) => {
 if (duration === '') {
-console.log('Valor invalido');
+console.log('[31m[1m Valor invalido');
 showMenu();
 } else {
 attackDuration = parseInt(duration);
-console.log(`Duración del ataque establecida en ${attackDuration} segundos`);
-showMenu(); // Volver a mostrar el menú principal
+console.log(`[32m[1m Duración del ataque establecida en ${attackDuration} segundos`);
+showMenu();
 }
 });
 break;
 case '5':
-console.log('Ingrese la IP para obtener información');
-rl.question('IP: ', (ip) => {
+console.log('[36m[1m Ingrese la IP para obtener información');
+rl.question('[32m[1m IP: ', (ip) => {
 if (ip === '') {
-console.log('IP invalida');
+console.log('[31m[1m IP invalida');
 showMenu();
 } else {
 getInfo(ip);
@@ -397,26 +397,26 @@ showMenu();
 });
 break;
 case '6':
-console.log('Ingrese la IP para análisis ');
-rl.question('IP: ', (ip) => {
+console.log('[36m[1m Ingrese la ip o dominio para el análisis ');
+rl.question('[32m[1m IP/Dominio: ', (ip) => {
 if (ip === '') {
-console.log('IP invalida');
+console.log('[31m[1m Ip o dominio invalido');
 showMenu();
 } else {
 try {
 analyzeIP(ip);
 } catch (error) {
-console.error(`Error al analizar IP: ${error.message}`);
+console.error(`[31m[1m Error al analizar IP: ${error.message}`);
 }
 showMenu();
 }
 });
 break;
 case '7':
-console.log('Ingrese la IP para obtener información geográfica');
-rl.question('IP: ', (ip) => {
+console.log('[36m[1m Ingrese la ip o dominio para obtener información geográfica');
+rl.question('[32m[1m IP/Dominio: ', (ip) => {
 if (ip === '') {
-console.log('IP invalida');
+console.log('[36m[1m Ip o dominio invalido');
 showMenu();
 } else {
 getGeoIP(ip);
@@ -425,11 +425,11 @@ showMenu();
 });
 break;
 case '0':
-console.log('Saliendo...');
+console.log('[32m[1m Saliendo...');
 process.exit();
 break;
 default:
-console.log('Opción invalida');
+console.log('[31m[1m Opción invalida');
 showMenu();
 }
 }).on('close', () => {
