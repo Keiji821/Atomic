@@ -238,9 +238,9 @@ console.log(`Generación del Sistema Operativo: ${osGeneration}`);
 }
 }
 console.log(`[32m[1m 
-        ╭─────────────────────────╮
+        ╭───────────────────────────╮
       │ 🌙 Resultados del análisis │
-        ╰─────────────────────────╯`);
+        ╰───────────────────────────╯`);
 console.log('');
 console.log(`      PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
 console.log(`      PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
