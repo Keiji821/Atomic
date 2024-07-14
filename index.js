@@ -190,19 +190,15 @@ console.log(`Sistema Operativo: ${os}`);
 } else if (line.includes('open')) {
 const port = line.split(' ')[0].trim();
 openPorts.push(`${port}/tcp`);
-console.log(`Puerto abierto: ${port}/tcp`);
 } else if (line.includes('closed')) {
 const port = line.split(' ')[0].trim();
 closedPorts.push(`${port}/tcp`);
-console.log(`Puerto cerrado: ${port}/tcp`);
 } else if (line.includes('filtered')) {
 const port = line.split(' ')[0].trim();
 filteredPorts.push(`${port}/tcp`);
-console.log(`Puerto filtrado: ${port}/tcp`);
 } else if (line.includes('unfiltered')) {
 const port = line.split(' ')[0].trim();
 unfilteredPorts.push(`${port}/tcp`);
-console.log(`Puerto no filtrado: ${port}/tcp`);
 } else if (line.includes('Service:')) {
 const service = line.split(':')[1].trim();
 const port = line.split(' ')[0].trim();
@@ -214,7 +210,7 @@ const port = line.split(' ')[0].trim();
 versions[port] = version;
 console.log(`Versión: ${version} en puerto ${port}/tcp`);
 } else if (line.includes('Script:')) {
-const script = line.split(':')[1].trim();
+const script = line.split(':', 1)[1].trim();
 const port = line.split(' ')[0].trim();
 scripts[port] = script;
 console.log(`Script: ${script} en puerto ${port}/tcp`);
@@ -241,8 +237,7 @@ osGeneration = line.split(':')[1].trim();
 console.log(`Generación del Sistema Operativo: ${osGeneration}`);
 }
 }
-
-console.log(`PUERTOS ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
+console.log(`PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
 console.log(`PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
 console.log(`PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
 console.log(`PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
