@@ -242,33 +242,34 @@ console.log(`[32m[1m
         │ Resultados del análisis   │
         ╰───────────────────────────╯`);
 console.log('');
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      SERVICIOS:`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m PUERTOS_ABIERTOS: ${openPorts.join(', ') || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m PUERTOS CERRADOS: ${closedPorts.join(', ') || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m PUERTOS FILTRADOS: ${filteredPorts.join(', ') || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m PUERTOS NO FILTRADOS: ${unfilteredPorts.join(', ') || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m SERVICIOS:`);
 for (const port in services) {
-console.log(`  Puerto ${port}: ${services[port] || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Puerto ${port}: ${services[port] || 'Sin resultados'}`);
 }
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      VERSIONES:`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m VERSIONES:`);
 for (const port in versions) {
-console.log(`  Puerto ${port}: ${versions[port] || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Puerto ${port}: ${versions[port] || 'Sin resultados'}`);
 }
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      SCRIPTS:`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m SCRIPTS:`);
 for (const port in scripts) {
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m     Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Puerto ${port}: ${scripts[port] || 'Sin resultados'}`);
 }
 console.log(`[32m[1m 
         ╭─────────────────────────╮
         │ Información adicional   │
         ╰─────────────────────────╯`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      Dirección MAC: ${macAddress || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      Tiempo de actividad: ${uptime || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
-console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m      Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
+console.log('');
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Dirección MAC: ${macAddress || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Tipo de dispositivo: ${deviceType || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Tiempo de actividad: ${uptime || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Predicción de secuencia TCP: ${tcpSequence || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Generación de secuencia de ID de IP: ${ipIdSequence || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m CPE del Sistema Operativo: ${osCPE || 'Sin resultados'}`);
+console.log(`[36m[1m       〔[36m01[32m〕  [31m[1m Generación del Sistema Operativo: ${osGeneration || 'Sin resultados'}`);
 console.log(``);
 });
 } catch (error) {
