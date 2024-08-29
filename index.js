@@ -6,7 +6,7 @@ const rl = require('readline').createInterface({
 
 const async = require('async');
 const axios = require('axios');
-const lolcat = require('lolcat');
+const lolcatjs = require('lolcatjs');
 const { exec } = require('child_process');
 
 
@@ -231,7 +231,7 @@ console.error(`Error: ${error.message}`);
 const showMenu = () => {
   console.clear();
   console.log('ATOMIC| lolcat')
-  console.log('[36m[1m      ⭐️ Desarrollado por Keiji821');
+  console.log('Desarrollado por Keiji821');
   console.log('                ');
   console.log('Iniciar ataque DDoS');
   console.log('Actualizar código');
