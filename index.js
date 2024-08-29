@@ -265,7 +265,7 @@ console.error(`Error: ${error.message}`);
 
 const showMenu = () => {
   console.clear();
-  console.log('[31m[1m                DDoS attack   ');
+  figlet ATOMIC| lolcat
   console.log('[36m[1m      ⭐️ Desarrollado por Keiji821');
   console.log('                ');
   console.log('[32m【1[32m】 [37m[1m Iniciar ataque DDoS');
