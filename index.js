@@ -7,6 +7,10 @@ const rl = require('readline').createInterface({
 const async = require('async');
 const axios = require('axios');
 const lolcatjs = require('lolcatjs');
+
+lolcatjs.options.seed = Math.round(Math.random() * 1000);
+lolcatjs.options.colors = true;
+
 const { exec } = require('child_process');
 
 
