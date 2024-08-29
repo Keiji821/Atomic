@@ -42,6 +42,7 @@ const decorations = {
 
 const async = require('async');
 const axios = require('axios');
+const lolcat = require('lolcat');
 const { exec } = require('child_process');
 
 
@@ -265,7 +266,7 @@ console.error(`Error: ${error.message}`);
 
 const showMenu = () => {
   console.clear();
-  figlet ATOMIC| lolcat
+  console.log('ATOMIC| lolcat')
   console.log('[36m[1m      ⭐️ Desarrollado por Keiji821');
   console.log('                ');
   console.log('[32m【1[32m】 [37m[1m Iniciar ataque DDoS');
