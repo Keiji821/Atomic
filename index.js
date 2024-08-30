@@ -234,7 +234,7 @@ console.error(`Error: ${error.message}`);
 
 const showMenu = () => {
   console.clear();
-  console.log('ATOMIC| lolcat')
+  lolcatjs.fromString('Hola');
   console.log('Desarrollado por Keiji821');
   console.log('                ');
   console.log('Iniciar ataque DDoS');
