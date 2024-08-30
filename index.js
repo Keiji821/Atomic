@@ -246,18 +246,18 @@ lolcatjs.fromString(
   })
 );
 
-  console.log('Desarrollado por Keiji821');
-  console.log('                ');
-  console.log('Iniciar ataque DDoS');
-  console.log('Actualizar código');
-  console.log('Configurar conexiones simultáneas');
-  console.log('Aumentar potencia del ataque');
-  console.log('Información de DNS para una dirección IP');
-  console.log('Análisis de IP');
-  console.log('Información geográfica de IP');
-  console.log('               ');
-  console.log('Salir');
-  console.log('               ');
+  lolcatjs.fromString('Desarrollado por Keiji821');
+  lolcatjs.fromString('                ');
+  lolcatjs.fromString('Iniciar ataque DDoS');
+  lolcatjs.fromString('Actualizar código');
+  lolcatjs.fromString('Configurar conexiones simultáneas');
+  lolcatjs.fromString('Aumentar potencia del ataque');
+  lolcatjs.fromString('Información de DNS para una dirección IP');
+  lolcatjs.fromString('Análisis de IP');
+  lolcatjs.fromString('Información geográfica de IP');
+  lolcatjs.fromString('               ');
+  lolcatjs.fromString('Salir');
+  lolcatjs.fromString('               ');
   rl.setPrompt('｢🌐｣➤ ');
   rl.prompt();
 };
