@@ -238,7 +238,7 @@ const showMenu = () => {
 
 console.log(
   figlet.textSync("Atomic", {
-    font: "default",
+    font: "Standard",
     horizontalLayout: "default",
     verticalLayout: "default",
     width: 80,
