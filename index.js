@@ -236,7 +236,7 @@ console.error(`Error: ${error.message}`);
 const showMenu = () => {
   console.clear();
 
-figlet("𝐀𝐓𝐎𝐌𝐈𝐂", function (err, data) {
+figlet("Atomic", function (err, data) {
   if (err) {
     console.log("Something went wrong...");
     console.dir(err);
