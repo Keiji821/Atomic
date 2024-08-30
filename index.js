@@ -12,6 +12,7 @@ lolcatjs.options.seed = Math.round(Math.random() * 1000);
 lolcatjs.options.colors = true;
 
 const { exec } = require('child_process');
+var figlet = require("figlet");
 
 
 const ddosAttack = async (url, numConnections, attackDuration) => {
@@ -234,7 +235,16 @@ console.error(`Error: ${error.message}`);
 
 const showMenu = () => {
   console.clear();
-  lolcatjs.fromString('Hola');
+
+figlet("𝐀𝐓𝐎𝐌𝐈𝐂", function (err, data) {
+  if (err) {
+    console.log("Something went wrong...");
+    console.dir(err);
+    return;
+  }
+  console.log(data);
+});
+
   console.log('Desarrollado por Keiji821');
   console.log('                ');
   console.log('Iniciar ataque DDoS');
