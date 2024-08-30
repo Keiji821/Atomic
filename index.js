@@ -236,7 +236,7 @@ console.error(`Error: ${error.message}`);
 const showMenu = () => {
   console.clear();
 
-console.log(
+lolcatjs.fromString(
   figlet.textSync("Atomic", {
     font: "Standard",
     horizontalLayout: "default",
