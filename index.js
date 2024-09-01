@@ -201,7 +201,7 @@ const response = await axios.get(`http://ip-api.com/json/${ip}`);
 const data = response.data;
 
 lolcatjs.fromString(
-  figlet.textSync("Información de la IP", {
+  figlet.textSync("Info", {
     font: "Standard",
     horizontalLayout: "default",
     verticalLayout: "default",
