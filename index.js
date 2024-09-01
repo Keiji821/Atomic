@@ -200,6 +200,9 @@ try {
 const response = await axios.get(`http://ip-api.com/json/${ip}`);
 const data = response.data;
 
+console.log(' ');
+console.log(' ');
+
 lolcatjs.fromString(
   figlet.textSync("Info", {
     font: "Standard",
@@ -210,6 +213,7 @@ lolcatjs.fromString(
   })
 );
 
+console.log(' ');
 lolcatjs.fromString(`〔1〕IP: ${data.query}`);
 lolcatjs.fromString(`〔2〕Estatus: ${data.status}`);
 lolcatjs.fromString(`〔3〕Continente: ${data.continent}`);
