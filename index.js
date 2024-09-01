@@ -251,10 +251,10 @@ lolcatjs.fromString(
   lolcatjs.fromString('〔1〕Iniciar ataque DDoS');
   lolcatjs.fromString('〔2〕Actualizar código');
   lolcatjs.fromString('〔3〕Configurar conexiones simultáneas');
-  lolcatjs.fromString('〔5〕Configurar potencia del DDoS');
-  lolcatjs.fromString('〔6〕Información de DNS para una dirección IP');
-  lolcatjs.fromString('〔7〕Análisis de IP');
-  lolcatjs.fromString('〔8〕Información geográfica de IP');
+  lolcatjs.fromString('〔4〕Configurar duración del DDoS');
+  lolcatjs.fromString('〔5〕Información de DNS para una dirección IP');
+  lolcatjs.fromString('〔6〕Análisis de IP');
+  lolcatjs.fromString('〔7〕Información geográfica de IP');
   lolcatjs.fromString('               ');
   lolcatjs.fromString('〔0〕Salir');
   lolcatjs.fromString('               ');
