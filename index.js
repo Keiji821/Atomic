@@ -248,17 +248,17 @@ lolcatjs.fromString(
 
   lolcatjs.fromString(' 「Desarrollado por Keiji821」');
   lolcatjs.fromString('                ');
-  lolcatjs.fromString('〔1️⃣〕Iniciar ataque DDoS');
-  lolcatjs.fromString('〔2️⃣〕Actualizar código');
-  lolcatjs.fromString('〔3️⃣〕Configurar conexiones simultáneas');
-  lolcatjs.fromString('〔4️⃣〕Configurar potencia del DDoS');
-  lolcatjs.fromString('〔5️⃣〕Información de DNS para una dirección IP');
-  lolcatjs.fromString('〔6️⃣〕Análisis de IP');
-  lolcatjs.fromString('〔7️⃣〕Información geográfica de IP');
+  lolcatjs.fromString('〔1〕Iniciar ataque DDoS');
+  lolcatjs.fromString('〔2〕Actualizar código');
+  lolcatjs.fromString('〔3〕Configurar conexiones simultáneas');
+  lolcatjs.fromString('〔5〕Configurar potencia del DDoS');
+  lolcatjs.fromString('〔6〕Información de DNS para una dirección IP');
+  lolcatjs.fromString('〔7〕Análisis de IP');
+  lolcatjs.fromString('〔8〕Información geográfica de IP');
   lolcatjs.fromString('               ');
-  lolcatjs.fromString('〔0️⃣〕Salir');
+  lolcatjs.fromString('〔0〕Salir');
   lolcatjs.fromString('               ');
-  rl.setPrompt('｢🌐｣➤ ');
+  rl.setPrompt('｢🎐｣➤ ');
   rl.prompt();
 };
 
