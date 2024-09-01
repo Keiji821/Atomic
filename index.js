@@ -199,34 +199,40 @@ const getGeoIP = async (ip) => {
 try {
 const response = await axios.get(`http://ip-api.com/json/${ip}`);
 const data = response.data;
-console.log(` `);
-console.log(`      
-        ╭─────────────────────────╮
-        │ 🌕 Información de la IP │
-        ╰─────────────────────────╯`);
-console.log(`IP: ${data.query}`);
-console.log(`Estatus: ${data.status}`);
-console.log(`Continente: ${data.continent}`);
-console.log(`Código del continente: ${data.continentCode}`);
-console.log(`País: ${data.country}`);
-console.log(`Código del país: ${data.countryCode}`);
-console.log(`Región: ${data.region}`);
-console.log(`Estado: ${data.regionName}`);
-console.log(`Ciudad: ${data.city}`);
-console.log(`Distrito: ${data.district}`);
-console.log(`Código postal: ${data.zip}`);
-console.log(`Latitud: ${data.lat}`);
-console.log(`Longitud: ${data.lon}`);
-console.log(`Zona horaria: ${data.timezone}`);
-console.log(`Offset: ${data.offset}`);
-console.log(`Moneda: ${data.currency}`);
-console.log(`ISP: ${data.isp}`);
-console.log(`Empresa: ${data.org}`);
-console.log(`AS: ${data.as}`);
-console.log(`Nombre de AS: ${data.asname}`);
-console.log(`Es un celular: ${data.mobile}`);
-console.log(`Es un proxy: ${data.proxy}`);
-console.log(`Es un hosting:${data.hosting}`);
+
+lolcatjs.fromString(
+  figlet.textSync("Atomic", {
+    font: "Standard",
+    horizontalLayout: "default",
+    verticalLayout: "default",
+    width: 80,
+    whitespaceBreak: true,
+  })
+);
+
+lolcatjs.fromString(`IP: ${data.query}`);
+lolcatjs.fromString(`Estatus: ${data.status}`);
+lolcatjs.fromString(`Continente: ${data.continent}`);
+lolcatjs.fromString(`Código del continente: ${data.continentCode}`);
+lolcatjs.fromString(`País: ${data.country}`);
+lolcatjs.fromString(`Código del país: ${data.countryCode}`);
+lolcatjs.fromString(`Región: ${data.region}`);
+lolcatjs.fromString(`Estado: ${data.regionName}`);
+lolcatjs.fromString(`Ciudad: ${data.city}`);
+lolcatjs.fromString(`Distrito: ${data.district}`);
+lolcatjs.fromString(`Código postal: ${data.zip}`);
+lolcatjs.fromString(`Latitud: ${data.lat}`);
+lolcatjs.fromString(`Longitud: ${data.lon}`);
+lolcatjs.fromString(`Zona horaria: ${data.timezone}`);
+lolcatjs.fromString(`Offset: ${data.offset}`);
+lolcatjs.fromString(`Moneda: ${data.currency}`);
+lolcatjs.fromString(`ISP: ${data.isp}`);
+lolcatjs.fromString(`Empresa: ${data.org}`);
+lolcatjs.fromString(`AS: ${data.as}`);
+lolcatjs.fromString(`Nombre de AS: ${data.asname}`);
+lolcatjs.fromString(`Es un celular: ${data.mobile}`);
+lolcatjs.fromString(`Es un proxy: ${data.proxy}`);
+lolcatjs.fromString(`Es un hosting:${data.hosting}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
