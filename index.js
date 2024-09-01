@@ -232,7 +232,7 @@ lolcatjs.fromString(`〔19〕AS: ${data.as}`);
 lolcatjs.fromString(`〔20〕Nombre de AS: ${data.asname}`);
 lolcatjs.fromString(`〔21〕Es un celular: ${data.mobile}`);
 lolcatjs.fromString(`〔22〕Es un proxy: ${data.proxy}`);
-lolcatjs.fromString(`〔23〕Es un hosting:${data.hosting}`);
+lolcatjs.fromString(`〔23〕Es un hosting: ${data.hosting}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
