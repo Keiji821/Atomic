@@ -201,7 +201,7 @@ const response = await axios.get(`http://ip-api.com/json/${ip}`);
 const data = response.data;
 
 lolcatjs.fromString(
-  figlet.textSync("Atomic", {
+  figlet.textSync("Información de la IP", {
     font: "Standard",
     horizontalLayout: "default",
     verticalLayout: "default",
@@ -210,29 +210,29 @@ lolcatjs.fromString(
   })
 );
 
-lolcatjs.fromString(`IP: ${data.query}`);
-lolcatjs.fromString(`Estatus: ${data.status}`);
-lolcatjs.fromString(`Continente: ${data.continent}`);
-lolcatjs.fromString(`Código del continente: ${data.continentCode}`);
-lolcatjs.fromString(`País: ${data.country}`);
-lolcatjs.fromString(`Código del país: ${data.countryCode}`);
-lolcatjs.fromString(`Región: ${data.region}`);
-lolcatjs.fromString(`Estado: ${data.regionName}`);
-lolcatjs.fromString(`Ciudad: ${data.city}`);
-lolcatjs.fromString(`Distrito: ${data.district}`);
-lolcatjs.fromString(`Código postal: ${data.zip}`);
-lolcatjs.fromString(`Latitud: ${data.lat}`);
-lolcatjs.fromString(`Longitud: ${data.lon}`);
-lolcatjs.fromString(`Zona horaria: ${data.timezone}`);
-lolcatjs.fromString(`Offset: ${data.offset}`);
-lolcatjs.fromString(`Moneda: ${data.currency}`);
-lolcatjs.fromString(`ISP: ${data.isp}`);
-lolcatjs.fromString(`Empresa: ${data.org}`);
-lolcatjs.fromString(`AS: ${data.as}`);
-lolcatjs.fromString(`Nombre de AS: ${data.asname}`);
-lolcatjs.fromString(`Es un celular: ${data.mobile}`);
-lolcatjs.fromString(`Es un proxy: ${data.proxy}`);
-lolcatjs.fromString(`Es un hosting:${data.hosting}`);
+lolcatjs.fromString(`〔1〕IP: ${data.query}`);
+lolcatjs.fromString(`〔2〕Estatus: ${data.status}`);
+lolcatjs.fromString(`〔3〕Continente: ${data.continent}`);
+lolcatjs.fromString(`〔4〕Código del continente: ${data.continentCode}`);
+lolcatjs.fromString(`〔5〕País: ${data.country}`);
+lolcatjs.fromString(`〔6〕Código del país: ${data.countryCode}`);
+lolcatjs.fromString(`〔7〕Región: ${data.region}`);
+lolcatjs.fromString(`〔8〕Estado: ${data.regionName}`);
+lolcatjs.fromString(`〔9〕Ciudad: ${data.city}`);
+lolcatjs.fromString(`〔10〕Distrito: ${data.district}`);
+lolcatjs.fromString(`〔11〕Código postal: ${data.zip}`);
+lolcatjs.fromString(`〔12〕Latitud: ${data.lat}`);
+lolcatjs.fromString(`〔13〕Longitud: ${data.lon}`);
+lolcatjs.fromString(`〔14〕Zona horaria: ${data.timezone}`);
+lolcatjs.fromString(`〔15〕Offset: ${data.offset}`);
+lolcatjs.fromString(`〔16〕Moneda: ${data.currency}`);
+lolcatjs.fromString(`〔17〕ISP: ${data.isp}`);
+lolcatjs.fromString(`〔18〕Empresa: ${data.org}`);
+lolcatjs.fromString(`〔19〕AS: ${data.as}`);
+lolcatjs.fromString(`〔20〕Nombre de AS: ${data.asname}`);
+lolcatjs.fromString(`〔21〕Es un celular: ${data.mobile}`);
+lolcatjs.fromString(`〔22〕Es un proxy: ${data.proxy}`);
+lolcatjs.fromString(`〔23〕Es un hosting:${data.hosting}`);
 } catch (error) {
 console.error(`Error: ${error.message}`);
 }
